@@ -2,9 +2,11 @@ name: Nightly Test Automation
 
 on:
   push:
+    paths:
+      - 'frontend/**'       # Trigger only when files in the frontend directory change
   schedule:
-    - cron: '0 2 * * *'
-  workflow_dispatch:
+    - cron: '0 2 * * *'      # Daily run at 2 AM UTC
+  workflow_dispatch:         # Manual trigger option
 
 jobs:
   test:
