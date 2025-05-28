@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="FDTestSuite" description="FrankDarling Regression Test cases">
+
+    <!-- Diamond Tests (Engagement Diamond + Setting) -->
+    <test name="DiamondTests">
+        <groups>
+            <run>
+                <include name="diamond"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="library.com.EngagementDiamondFlow" />
+            <class name="library.com.EngagementSettingFlow" />
+        </classes>
+    </test>
+
+    
+</suite>

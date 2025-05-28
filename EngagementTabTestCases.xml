@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="FrankDarling-Engagement Tab Test Cases">
+     <listeners>
+        <listener class-name="utils.com.RetryListener"/>
+    </listeners>
+    
+    <test name="EngagementDiamondFlowTest">
+            <groups>
+            <run>
+                <include name="diamond"/>
+            </run>
+        </groups>
+
+        <classes>    
+            <class name="library.com.EngagementDiamondFlow" />
+            <class name="library.com.EngagementSettingFlow" />
+        </classes>
+    </test>
+</suite>

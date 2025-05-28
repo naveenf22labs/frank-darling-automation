@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="FrankDarling Cart and Checkout related Test Cases">
+
+    <test name="Cart-Checkout Related Testcases">
+        <groups>
+            <run>
+                <include name="CartCheckoutTestCases"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="cartCheckout.DiamondsCombinationToCart" />
+            <class name="cartCheckout.MultipleDefaultDiamondsToCart" />
+            <class name="cartCheckout.MultipleProductsToCheckout" />
+            <class name="cartCheckout.RemovingJewelryProducts" />
+            <class name="cartCheckout.RemovingJewelryWeddingProducts" />
+            <class name="cartCheckout.RemovingWeddingProducts"/>
+            <class name="cartCheckout.SettingsJewelryWeddingItems" />
+            <class name="cartCheckout.SWADJewelry" />
+            
+        </classes>
+    </test>
+    
+    
+
+</suite>
