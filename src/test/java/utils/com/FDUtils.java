@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 
 import java.time.Duration;
@@ -47,35 +48,32 @@ public class FDUtils
 		driver.get("https://frankdarling.com");
 		// System.out.println("Driver initialized: " + driver);
 	}
-	
-	@AfterMethod(alwaysRun=true)
+
+	@AfterMethod(alwaysRun = true)
 	public void tearDownAndClose(ITestResult result) {
-	    if (ITestResult.FAILURE == result.getStatus()) {
-	        ScreenshotUtil.captureScreenshot(driver, result.getName());
-	    }
-	    if (driver != null) {
-	        driver.quit();
-	    }
-	    getExtentInstance().flush();
+		ExtentTest logger = test.get(); // Get the test instance for the current thread
+
+		// Log based on result status
+		if (result.getStatus() == ITestResult.FAILURE) {
+			logger.fail("Test Failed: " + result.getThrowable());
+			ScreenshotUtil.captureScreenshot(driver, result.getName());
+		} else if (result.getStatus() == ITestResult.SUCCESS) {
+			logger.pass("Test Passed");
+		} else if (result.getStatus() == ITestResult.SKIP) {
+			logger.skip("Test Skipped: " + result.getThrowable());
+		}
+
+		// Quit driver
+		if (driver != null) {
+			driver.quit();
+		}
 
 	}
 
-	
-	
-//	 @AfterMethod
-//	    public void tearDown(ITestResult result) {
-//	        if (ITestResult.FAILURE == result.getStatus()) {
-//	            // Capture screenshot on failure
-//	            ScreenshotUtil.captureScreenshot(driver, result.getName());
-//	        }
-//	    }
-//	@AfterMethod
-//	public void closeUrl()
-//	{
-//		 if(driver != null) {
-//	            driver.quit();  // Close the browser after all tests are executed
-//	        }
-//	}
-	
-	
+	@AfterSuite(alwaysRun = true)
+	public void flushReport() {
+		getExtentInstance().flush();
+	}
+
+
 }
