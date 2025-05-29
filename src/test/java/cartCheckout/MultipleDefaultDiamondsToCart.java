@@ -51,10 +51,9 @@ public class MultipleDefaultDiamondsToCart extends FDUtils {
         cart.selectRandomBandMaterial();
         cart.selectThisSetting();
         cart.defaultDiamond();
-
+        Thread.sleep(2000);
         test.get().info("Proceeding to checkout.");
         cart.proceedToCheckout();
-
         test.get().info("Validating checkout.");
         cart.checkoutValidation();
     }

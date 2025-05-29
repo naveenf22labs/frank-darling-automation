@@ -43,6 +43,7 @@ public class EngagementDiamondFlow extends FDUtils {
 
         engagementPage.searchSettingForThisDiamond();
         test.get().info("Searched for setting to match selected diamond");
+        Thread.sleep(2000);
 
         engagementPage.clickRandomProduct(FDPageObjectData.diamondSettingPLP);
         test.get().info("Clicked a random setting product");
