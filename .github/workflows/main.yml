@@ -1,11 +1,11 @@
 name: Nightly Test Automation
 
 on:
-  repository_dispatch: #this will catch the trigger from repo A
+  repository_dispatch: # this will catch the trigger from repo A
     types: [run-automation]
   schedule:
-    - cron: '0 2 * * *'      # Daily run at 2 AM UTC
-  workflow_dispatch:         # Manual trigger option
+    - cron: '0 1 * * *'  # Daily run at 1 AM UTC
+  workflow_dispatch:     # Manual trigger option
 
 jobs:
   test:
@@ -29,10 +29,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Install Google Chrome
+      - name: Install Compatible Chrome Version (v124)
         run: |
-          sudo apt update
-          sudo apt install -y google-chrome-stable
+          sudo apt purge -y google-chrome-stable || true
+          wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_124.0.6367.91-1_amd64.deb
+          sudo apt install -y ./google-chrome-stable_124.0.6367.91-1_amd64.deb
 
       - name: Run Tests using TestSuite.xml
         run: mvn clean test -DsuiteXmlFile=TestSuite.xml
