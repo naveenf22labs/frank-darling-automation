@@ -1,11 +1,10 @@
 name: Nightly Test Automation
-
 on:
-  repository_dispatch:
+  repository_dispatch: #this will catch the trigger from repo A
     types: [run-automation]
   schedule:
-    - cron: '0 1 * * *'      # Daily run at 2 AM UTC
-  workflow_dispatch:
+    - cron: '0 1 * * *'      # Daily run at 1 AM UTC
+  workflow_dispatch:         # Manual trigger option
 
 jobs:
   test:
@@ -29,6 +28,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
+      - name: Install Google Chrome
+        run: |
+          sudo apt update
+          sudo apt install -y google-chrome-stable
 
       - name: Run Tests using TestSuite.xml
         run: mvn clean test -DsuiteXmlFile=TestSuite.xml
@@ -38,4 +41,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: extent-report
-          path: test-output/ExtentReport.html
+          path: test-output/ExtentReport.htm
