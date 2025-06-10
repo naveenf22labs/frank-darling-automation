@@ -2,8 +2,8 @@ name: Nightly Test Automation
 on:
   repository_dispatch: #this will catch the trigger from repo A
     types: [run-automation]
-  schedule:
-    - cron: '0 1 * * *'      # Daily run at 1 AM UTC
+  #schedule:
+   # - cron: '0 1 * * *'      # Daily run at 1 AM UTC
   workflow_dispatch:         # Manual trigger option
 
 jobs:
