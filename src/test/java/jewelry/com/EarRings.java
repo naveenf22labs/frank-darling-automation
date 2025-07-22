@@ -11,7 +11,7 @@ public class EarRings extends FDUtils
     @Test(groups = "jewelry", description = "Verifying the functionality of Earring. Selecting the studd, adding to the cart and completing checkout flow.")
     public void jewelryEarRingFlow() throws InterruptedException {
         
-        // ✅ Initialize ExtentTest for this test
+        //  Initialize ExtentTest for this test
         ExtentTest logger = getExtentInstance().createTest("Jewelry Earring Flow Test");
         test.set(logger);
 
