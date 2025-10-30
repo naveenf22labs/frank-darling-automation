@@ -41,6 +41,7 @@ public class GoldBands extends FDUtils {
 
         goldBandPage.ringSizer();
         test.get().info("Used ring sizer");
+        goldBandPage.handleDiamondTypeIfPresent(test.get());
 
         goldBandPage.addToCartButton();
         test.get().info("Added product to cart");
