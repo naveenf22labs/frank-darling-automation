@@ -28,10 +28,6 @@ public class DiamondsCombinationToCart extends FDUtils {
 
         test.get().info("Closing popup if present.");
         cart.closePopUp();
-        Thread.sleep(3000);
-
-        test.get().info("Double-clicking Reamaze widget.");
-        cart.doubleClickReamazeWidget();
 
         test.get().info("Selecting the first diamond.");
         cart.selectDiamond1();
@@ -48,6 +44,13 @@ public class DiamondsCombinationToCart extends FDUtils {
         test.get().info("Selecting a random band material.");
         cart.selectRandomBandMaterial();
 
+        cart.ringSizer();
+        test.get().info("Used ring sizer option");
+        cart.bandMaterialDropdown();
+        test.get().info("User selects Band material option");
+        // select if diamond type dropdown  is present in PDP
+        cart.handleDiamondTypeIfPresent(test.get());
+
         test.get().info("Adding setting to the stone.");
         cart.addSettingToStone();
 
@@ -63,7 +66,14 @@ public class DiamondsCombinationToCart extends FDUtils {
 
         test.get().info("Selecting a random band material.");
         cart.selectRandomBandMaterial();
+        cart.ringSizer();
+        test.get().info("Used ring sizer");
 
+        cart.bandMaterialDropdown();
+        test.get().info("Band material option selected");
+
+        // select if diamond type dropdown  is present in PDP
+        cart.handleDiamondTypeIfPresent(test.get());
         test.get().info("Selecting this setting.");
         cart.selectThisSetting();
 
@@ -77,6 +87,7 @@ public class DiamondsCombinationToCart extends FDUtils {
 
         test.get().info("Removing all products from cart.");
         cart.removeAllProductsFromCart();
+        //required to check all products should removed.
 
         // Uncomment if needed
         // cart.removeProductFromCart(1);

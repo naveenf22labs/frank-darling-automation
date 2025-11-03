@@ -27,17 +27,17 @@ public class StackingRings extends FDUtils {
         stacking.closePopUp();
         test.get().info("Closed any popup if present");
 
-        stacking.doubleClickReamazeWidget();
-        test.get().info("Interacted with Reamaze widget");
-
         stacking.clickRandomProduct(FDPageObjectData.weddingProductPLP);
         test.get().info("Clicked random Stacking Ring product");
 
-        stacking.selectRandomBandMaterial();
-        test.get().info("Selected random band material");
+//        stacking.selectRandomBandMaterial();
+//        test.get().info("Selected random band material");
+
 
         stacking.ringSizer();
         test.get().info("Used ring sizer");
+        // will select if stone type is present.
+        stacking.handleDiamondTypeIfPresent(test.get());
 
         stacking.addToCartButton();
         test.get().info("Added product to cart");

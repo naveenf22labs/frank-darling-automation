@@ -1,6 +1,7 @@
 package library.com;
 
 import com.aventstack.extentreports.ExtentTest;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import pageobjects.com.FDPageObjectData;
 import utils.com.FDUtils;
@@ -32,9 +33,6 @@ public class EngagementDiamondFlow extends FDUtils {
 
         Thread.sleep(3000);
 
-        engagementPage.doubleClickReamazeWidget();
-        test.get().info("Interacted with Reamaze widget");
-
         engagementPage.selectDiamond1();
         test.get().info("Selected a diamond");
 
@@ -53,6 +51,11 @@ public class EngagementDiamondFlow extends FDUtils {
 
         engagementPage.ringSizer();
         test.get().info("Used ring sizer option");
+
+        engagementPage.bandMaterialDropdown();
+        test.get().info("User selects Band material option");
+            // select if diamond type dropdown  is present in PDP
+        engagementPage.handleDiamondTypeIfPresent(test.get());
 
         engagementPage.addSettingToStone();
         test.get().info("Added selected setting to the stone");

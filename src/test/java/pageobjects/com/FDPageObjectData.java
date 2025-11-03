@@ -14,6 +14,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class FDPageObjectData
 {
@@ -31,14 +32,14 @@ public class FDPageObjectData
     public By reamazeWidgetIcon = By.id("reamaze-widget-icon");
     public By closePopUpButton = By.className("klaviyo-close-form");
     public By diamondRow = By.xpath("(//div[starts-with(@name, 'diamond-row')])[1]"); //start with a flow diamond
-    public By diamondRowForSetting=By.xpath("(//div[starts-with(@name, 'diamond-row')])[1]");// Start with a setting flow
+    public By diamondRowForSetting=By.xpath("(//div[starts-with(@name, 'diamond')])[1]");// Start with a setting flow
     public By selectThisStoneButton = By.xpath("(//button[text()='Select this stone'])[1]");
     public By searchSettingButton = By.xpath("//button[@type='button' and @variant='primary']");
     public By harperRingLink = By.xpath("//a[text()='The Harper ']");
-    public By addSettingToStoneButton = By.xpath("(//button[text()='Add Setting to stone'])[2]");
+    public By addSettingToStoneButton = By.xpath("//div[text()='Add Setting to Stone']");
     public By addStoneToSettingButton = By.xpath("(//button[text()='Add stone to setting'])[1]");
 
-    public By selectThisSettingButton = By.xpath("(//button[text()='Select this setting'])[2]");
+    public By selectThisSettingButton = By.xpath("//div[text()='Select This Setting']");
 
     public By checkoutButton = By.xpath("//button[text()='Checkout']");
     //----------------------------------- Wedding properties------------------
@@ -46,7 +47,7 @@ public class FDPageObjectData
     private By menWeddingbandXPath = By.xpath("//span[text()='Mens Wedding Bands']");
     private By menWeddingPlp= By.xpath("//a[text()='The Rigatoni']");
 
-    private By addToCartXpath=By.xpath("(//button[text()='Add to Cart'])[2]");
+    private By addToCartXpath=By.xpath("//div[text()='Add To Cart']");
     
     private By anniversaryXpath=By.xpath("//span[text()='Anniversary Rings']");
     private By  anniversaryPlpXpath=By.xpath("//a[text()='The Round Scallop Eternity 3mm']");
@@ -68,9 +69,9 @@ public class FDPageObjectData
     private By earRingsPlp=By.xpath("//div[contains(@class,'w-vw-1/2 h') and contains(@id,'engagement-rings')]");
     
     private By necklesXpath=By.xpath("//span[text()='Necklaces']");
-    private By necklaceButtonXpath=By.xpath("(//button[text()='Select this necklace'])[2]");
+    private By necklaceButtonXpath=By.xpath("//div[text()='Select This Necklace']");
     
-    private By selectDiamondForNecklace=By.xpath("(//div[starts-with(@name, 'diamond-row')])[1]");
+    private By selectDiamondForNecklace=By.xpath("(//div[starts-with(@name, 'diamond')])[1]");
     
         
     private By  addDiamondToNecklaceButtonXpath= By.xpath("(//button[text()='Add diamond to necklace'])[1]");
@@ -186,7 +187,7 @@ public class FDPageObjectData
     public void selectDiamond2() {
         driver.findElement(diamondRowForSetting).click();
     }
- 
+
     public void selectThisStone()
     {
     	WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -411,12 +412,12 @@ public class FDPageObjectData
     }
 
 //Method to scroll to the bottom of the page until all products are loaded
-  public void scrollToEndOfPage(By productLocator) throws InterruptedException
+ /* public void scrollToEndOfPage(By productLocator) throws InterruptedException
   {
    JavascriptExecutor js = (JavascriptExecutor) driver;
    long lastHeight = (long) js.executeScript("return document.body.scrollHeight");
 
-   while (true) 
+   while (true)
    {
        // Scroll to the bottom of the page
        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
@@ -428,15 +429,27 @@ public class FDPageObjectData
 
        // Check if new products are loaded by comparing scroll height
        long newHeight = (long) js.executeScript("return document.body.scrollHeight");
-       if (newHeight == lastHeight) 
+       if (newHeight == lastHeight)
        {
            break; // Exit the loop when no new products are loaded
        }
        lastHeight = newHeight;
    }
+} */
+public void scrollToEndOfPage() throws InterruptedException {
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+
+    // Scroll down by a small amount (e.g. 800 pixels)
+    js.executeScript("window.scrollBy(0, 700);");
+
+    // Wait briefly to allow UI to adjust or images to load
+    Thread.sleep(1000);
 }
 
-      //Method to select a random product from the PLP
+
+
+
+    //Method to select a random product from the PLP
       public WebElement selectRandomProduct(By productLocator)
       {
           List<WebElement> products = getProductList(productLocator);
@@ -449,8 +462,9 @@ public class FDPageObjectData
     public void clickRandomProduct(By productLocator) throws InterruptedException
     {
       // Scroll to the end of the page first
-       scrollToEndOfPage(productLocator);
-
+      // scrollToEndOfPage(productLocator);
+        scrollToEndOfPage();
+           Thread.sleep(2000);
        // Select and click a random product
        WebElement randomProduct = selectRandomProduct(productLocator);
          randomProduct.click();
@@ -485,31 +499,72 @@ public class FDPageObjectData
     }
     
     // selecting random dropdown elements for products in pdp.
-    private By bandMaterialDropdownSelector=By.xpath("(//select[@name='bandSelector'])[2]");
-    private By tennisLength=By.xpath("(//select[@name='braceletLength'])[2]");
-    private By ringSize=By.xpath("(//select[@name='sizeSelector'])[2]");
-    private By caratWeight=By.xpath("(//select[@name='caratWeightSelector'])[2]");
-    private By stoneTypeXpath=By.xpath("(//select[@name='diamondType'])[2]");
+   // private By bandMaterialDropdownSelector=By.xpath("(//select[@name='bandSelector'])[2]");
+    //input[@type="radio"]
+    private By tennisLength=By.xpath("//select[@id='total-length']");
+    private By ringSize=By.xpath("//select[@id='ring-size']");
+    private By caratWeight=By.xpath("//select[@id='total-carat-weight']");
+    private By stoneTypeXpath=By.xpath("//select[@id='diamond-type']");
+    private By bandMaterialDropdownSelector=By.xpath("//input[@type='radio']");
+    private By bandWidthDropdownSelector=By.xpath("//select[@id='band-width']");
 
-    public void selectRandomOption(By dropdownLocator, String dropdownName) {
+
+    // adding random selction method for radius options
+
+    public void selectRandomRadioOption(By radioLocator, String optionGroupName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        List<WebElement> radioLabels = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
+                By.xpath("//div[contains(@class,'flex')]//label[input[@type='radio']]")
+        ));
+
+        if (radioLabels.isEmpty()) {
+            System.out.println("No radio options found for " + optionGroupName);
+            return;
+        }
+
+        WebElement randomLabel = radioLabels.get(new Random().nextInt(radioLabels.size()));
+
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", randomLabel);
+        randomLabel.click();
+
+        // Get the value from the nested input
+        WebElement input = randomLabel.findElement(By.xpath(".//input[@type='radio']"));
+        String value = input.getAttribute("value");
+
+        System.out.println("Selected random option for " + optionGroupName + ": " + value);
+    }
+    public void selectRandomBandMaterial() {
+        selectRandomRadioOption(bandMaterialDropdownSelector, "Band Material");
+    }
+
+public void selectRandomOption(By dropdownLocator, String dropdownName) {
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+    try {
         WebElement dropdownElement = wait.until(ExpectedConditions.visibilityOfElementLocated(dropdownLocator));
         Select dropdown = new Select(dropdownElement);
-        List<WebElement> options = dropdown.getOptions();
 
-        if (options.size() > 0) {
-            int randomIndex = new Random().nextInt(options.size());  // skip placeholder
-            WebElement randomOption = options.get(randomIndex);
-            dropdown.selectByVisibleText(randomOption.getText());
-            System.out.println("Selected random option for " + dropdownName + ": " + randomOption.getText());
-        } else {
-            System.out.println("No valid options found for " + dropdownName);
+        // Filter only enabled options
+        List<WebElement> enabledOptions = dropdown.getOptions()
+                .stream()
+                .filter(WebElement::isEnabled)
+                .toList();
+
+        if (enabledOptions.isEmpty()) {
+            System.out.println("No enabled options found for " + dropdownName);
+            return;
         }
+
+        // Pick a random enabled option
+        WebElement randomOption = enabledOptions.get(new Random().nextInt(enabledOptions.size()));
+        dropdown.selectByVisibleText(randomOption.getText());
+
+        System.out.println("Selected random option for " + dropdownName + ": " + randomOption.getText());
+
+    } catch (Exception e) {
+        System.out.println("Error selecting random option for " + dropdownName + ": " + e.getMessage());
     }
-    
-    public void selectRandomBandMaterial() {
-        selectRandomOption(bandMaterialDropdownSelector, "Band Material");
-    }
+}
 
     public void ringSizer() {
         selectRandomOption(ringSize, "Ring Size");
@@ -526,74 +581,24 @@ public class FDPageObjectData
     	selectRandomOption(stoneTypeXpath, "StoneType");
     }
 
-  /*  public void selectRandomBandMaterial() throws InterruptedException
+    public void bandMaterialDropdown()
     {
-   	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-       // Wait until dropdown is visible
-        WebElement dropdownElement = wait.until(
-           ExpectedConditions.visibilityOfElementLocated(bandMaterialDropdownSelector));
- 
-    	//WebElement dropdownElement = driver.findElement(bandMaterialDropdownSelector);
-        Select dropdown = new Select(dropdownElement);
-        List<WebElement> options = dropdown.getOptions();
-
-        int startIndex = 0; 
-        int randomIndex = new Random().nextInt(options.size() - startIndex) + startIndex;
-        WebElement randomOption = options.get(randomIndex);
-
-        String optionText = randomOption.getText();
-        dropdown.selectByVisibleText(optionText);
-
-        System.out.println("Randomly selected dropdown option: " + optionText);    	
+        selectRandomOption(bandWidthDropdownSelector, "BandWidth");
     }
-    
-       
-       public void ringSizer() 
-       {
-    		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public void handleDiamondTypeIfPresent(com.aventstack.extentreports.ExtentTest testLogger) {
+        try {
+            List<WebElement> diamondTypeElements = driver.findElements(By.xpath("//label[text()='Diamond Type']"));
 
-    	       // Wait until dropdown is visible
-    	        WebElement dropdownElement = wait.until(
-    	           ExpectedConditions.visibilityOfElementLocated(ringSize));
-    	 
-    	    	//WebElement dropdownElement = driver.findElement(bandMaterialDropdownSelector);
-    	        Select dropdown = new Select(dropdownElement);
-    	        List<WebElement> options = dropdown.getOptions();
+            if (!diamondTypeElements.isEmpty()) {
+                testLogger.info("'Diamond Type' section found. Performing stoneType()...");
+                diamondTypeElements.get(0).click();
+                stoneType(); // calling your existing method
+            } else {
+                testLogger.info("'Diamond Type' section not found. Skipping stoneType() step.");
+            }
+        } catch (Exception e) {
+            testLogger.warning("An error occurred while checking for 'Diamond Type': " + e.getMessage());
+        }
+    }
 
-    	        int startIndex = 0; 
-    	        int randomIndex = new Random().nextInt(options.size() - startIndex) + startIndex;
-    	        WebElement randomOption = options.get(randomIndex);
-
-    	        String optionText = randomOption.getText();
-    	        dropdown.selectByVisibleText(optionText);
-
-    	        System.out.println("Randomly selected ring size is: " + optionText);   
-       }
-       
-      
-       public void tennisTotalLength() 
-       {
-    		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-    	       // Wait until dropdown is visible
-    	        WebElement dropdownElement = wait.until(
-    	           ExpectedConditions.visibilityOfElementLocated(tennisLength));
-    	 
-    	    	//WebElement dropdownElement = driver.findElement(bandMaterialDropdownSelector);
-    	        Select dropdown = new Select(dropdownElement);
-    	        List<WebElement> options = dropdown.getOptions();
-
-    	        int startIndex = 0; 
-    	        int randomIndex = new Random().nextInt(options.size() - startIndex) + startIndex;
-    	        WebElement randomOption = options.get(randomIndex);
-
-    	        String optionText = randomOption.getText();
-    	        dropdown.selectByVisibleText(optionText);
-
-    	        System.out.println("Randomly selected ring size is: " + optionText);   
-       } */
-       
-    
-  
 }

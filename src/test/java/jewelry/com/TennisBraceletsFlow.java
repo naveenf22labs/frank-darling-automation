@@ -27,18 +27,20 @@ public class TennisBraceletsFlow extends FDUtils {
         tennis.closePopUp();
         test.get().info("Closed any popup if present");
 
-        tennis.doubleClickReamazeWidget();
-        test.get().info("Interacted with Reamaze widget");
+       // tennis.doubleClickReamazeWidget();
+       // test.get().info("Interacted with Reamaze widget");
 
         tennis.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
         test.get().info("Clicked a random bracelet product");
 
-        tennis.selectRandomBandMaterial();
-        test.get().info("Selected random band material");
+//        tennis.selectRandomBandMaterial();
+//        test.get().info("Selected random band material");
 
         tennis.tennisTotalLength();
         test.get().info("Selected bracelet total length");
 
+        tennis.stoneType();
+        test.get().info("Selected stone type");
         tennis.addToCartButton();
         test.get().info("Clicked Add to Cart");
 

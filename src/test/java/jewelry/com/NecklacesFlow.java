@@ -32,9 +32,6 @@ public class NecklacesFlow extends FDUtils {
         necklaces.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
         test.get().info("Clicked on a random necklace product");
 
-        necklaces.doubleClickReamazeWidget();
-        test.get().info("Interacted with Reamaze widget");
-
         necklaces.selectRandomBandMaterial();
         test.get().info("Selected a random band material");
 
@@ -43,6 +40,8 @@ public class NecklacesFlow extends FDUtils {
 
         necklaces.searchSettingForThisDiamond();
         test.get().info("Searched setting for selected diamond");
+
+        Thread.sleep(2000);
 
         necklaces.selectDiamondFromNecklacesPlp();
         test.get().info("Selected diamond from necklaces PLP");

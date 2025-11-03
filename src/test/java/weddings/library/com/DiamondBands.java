@@ -27,19 +27,18 @@ public class DiamondBands extends FDUtils {
         diamondBand.closePopUp();
         test.get().info("Closed any popup");
 
-        diamondBand.doubleClickReamazeWidget();
-        test.get().info("Interacted with Reamaze widget");
-
         diamondBand.clickRandomProduct(FDPageObjectData.weddingProductPLP);
         test.get().info("Clicked random diamond band product");
 
         // diamondBand.selectDiamondBandProduct();
 
-        diamondBand.selectRandomBandMaterial();
-        test.get().info("Selected random band material");
+//        diamondBand.selectRandomBandMaterial();
+//        test.get().info("Selected random band material");
 
         diamondBand.ringSizer();
         test.get().info("Used ring sizer");
+        diamondBand.stoneType();
+        test.get().info("Selecting stone type");
 
         diamondBand.addToCartButton();
         test.get().info("Added product to cart");

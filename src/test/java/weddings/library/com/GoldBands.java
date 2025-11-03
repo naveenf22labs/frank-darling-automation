@@ -1,9 +1,13 @@
 package weddings.library.com;
 
 import com.aventstack.extentreports.ExtentTest;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import pageobjects.com.FDPageObjectData;
 import utils.com.FDUtils;
+
+import java.util.List;
 
 public class GoldBands extends FDUtils {
 
@@ -26,9 +30,6 @@ public class GoldBands extends FDUtils {
         goldBandPage.closePopUp();
         test.get().info("Closed any popup");
 
-        goldBandPage.doubleClickReamazeWidget();
-        test.get().info("Interacted with Reamaze widget");
-
         goldBandPage.clickRandomProduct(FDPageObjectData.weddingProductPLP);
         test.get().info("Clicked random Gold Band product");
 
@@ -36,11 +37,13 @@ public class GoldBands extends FDUtils {
         // goldBandPage.selectDiamondBandProduct();
         // Thread.sleep(2000);
 
-        goldBandPage.selectRandomBandMaterial();
-        test.get().info("Selected random band material");
+//        goldBandPage.selectRandomBandMaterial();
+//        test.get().info("Selected random band material");
 
         goldBandPage.ringSizer();
         test.get().info("Used ring sizer");
+
+        //will select stone/diamond type if its present.
         goldBandPage.handleDiamondTypeIfPresent(test.get());
 
         goldBandPage.addToCartButton();

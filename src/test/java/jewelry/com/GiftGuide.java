@@ -27,14 +27,14 @@ public class GiftGuide extends FDUtils
           gift.closePopUp();
           test.get().info("Closed any popup");
 
-          gift.doubleClickReamazeWidget();
-          test.get().info("Interacted with Reamaze widget");
+//          gift.doubleClickReamazeWidget();
+//          test.get().info("Interacted with Reamaze widget");
 
           gift.selectGiftGuidePlp();
           test.get().info("Selected Gift Guide PLP");
 
-          gift.selectRandomBandMaterial();
-          test.get().info("Selected random band material");
+//          gift.selectRandomBandMaterial();
+//          test.get().info("Selected random band material");
 
           gift.addToCartButton();
           test.get().info("Added product to cart");

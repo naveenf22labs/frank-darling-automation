@@ -27,19 +27,18 @@ public class EternityBand extends FDUtils {
         eternityBand.closePopUp();
         test.get().info("Closed any popup");
 
-        eternityBand.doubleClickReamazeWidget();
-        test.get().info("Interacted with Reamaze widget");
-
         eternityBand.clickRandomProduct(FDPageObjectData.weddingProductPLP);
         test.get().info("Clicked random Eternity Band product");
 
         // eternityBand.selectDiamondBandProduct();
 
-        eternityBand.selectRandomBandMaterial();
-        test.get().info("Selected random band material");
+//        eternityBand.selectRandomBandMaterial();
+//        test.get().info("Selected random band material");
 
         eternityBand.ringSizer();
         test.get().info("Used ring sizer");
+        eternityBand.stoneType();
+        test.get().info("Selecting the stone type");
 
         eternityBand.addToCartButton();
         test.get().info("Added product to cart");

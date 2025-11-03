@@ -24,6 +24,9 @@ public class EngagementSettingFlow extends FDUtils {
         engagementPage.startWithSetting();
         test.get().info("Started flow with a Setting");
 
+                engagementPage.closePopUp();
+        test.get().info("Closed any pop-up");
+
         engagementPage.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
         test.get().info("Clicked on a random product");
 
@@ -33,6 +36,12 @@ public class EngagementSettingFlow extends FDUtils {
         engagementPage.ringSizer();
         test.get().info("Used ring sizer");
 
+        engagementPage.bandMaterialDropdown();
+        test.get().info("Band material option selected");
+
+        // select if diamond type dropdown  is present in PDP
+        engagementPage.handleDiamondTypeIfPresent(test.get());
+
         engagementPage.selectThisSetting();
         test.get().info("Selected this setting");
 
@@ -40,11 +49,7 @@ public class EngagementSettingFlow extends FDUtils {
         engagementPage.searchSettingForThisDiamond();
         test.get().info("Searched setting for this diamond");
 
-        engagementPage.closePopUp();
-        test.get().info("Closed any pop-up");
-
-        engagementPage.doubleClickReamazeWidget();
-        test.get().info("Interacted with Reamaze widget");
+        Thread.sleep(2000);
 
         engagementPage.selectDiamond2();
         test.get().info("Selected diamond");

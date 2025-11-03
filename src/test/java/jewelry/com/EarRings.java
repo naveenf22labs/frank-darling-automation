@@ -31,9 +31,6 @@ public class EarRings extends FDUtils
         earRings.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
         test.get().info("Clicked a random product from Product Listing Page");
 
-        earRings.doubleClickReamazeWidget();
-        test.get().info("Double-clicked Reamaze widget");
-
         earRings.selectRandomBandMaterial();
         test.get().info("Selected random band material for earring");
 

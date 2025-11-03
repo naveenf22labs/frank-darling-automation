@@ -32,11 +32,11 @@ public class NecklaceWithDefaultDiamond extends FDUtils {
         necklaces.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
         test.get().info("Clicked a random necklace product");
 
-        necklaces.doubleClickReamazeWidget();
-        test.get().info("Interacted with Reamaze widget");
+//        necklaces.doubleClickReamazeWidget();
+//        test.get().info("Interacted with Reamaze widget");
 
-        necklaces.selectRandomBandMaterial();
-        test.get().info("Selected random band material");
+//        necklaces.selectRandomBandMaterial();
+//        test.get().info("Selected random band material");
 
         necklaces.selectThisNecklaceButton();
         test.get().info("Clicked 'Select This Necklace'");

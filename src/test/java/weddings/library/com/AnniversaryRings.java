@@ -33,14 +33,17 @@ public class AnniversaryRings extends FDUtils {
 
         // anniversary.selectAnniversaryPlp();
 
-        anniversary.doubleClickReamazeWidget();
-        test.get().info("Interacted with Reamaze widget");
+//        anniversary.doubleClickReamazeWidget();
+//        test.get().info("Interacted with Reamaze widget");
 
         anniversary.selectRandomBandMaterial();
         test.get().info("Selected random band material");
 
         anniversary.ringSizer();
         test.get().info("Used ring sizer");
+
+        anniversary.stoneType();
+        test.get().info("Selecting diamond type");
 
         anniversary.addToCartButton();
         test.get().info("Added product to cart");
