@@ -25,8 +25,8 @@ public class RemovingWeddingProducts extends FDUtils {
         test.get().info("Closing popup if present.");
         cart.closePopUp();
 
-        test.get().info("Interacting with Reamaze widget.");
-        cart.doubleClickReamazeWidget();
+//        test.get().info("Interacting with Reamaze widget.");
+//        cart.doubleClickReamazeWidget();
 
         test.get().info("Clicking a random Anniversary Band product.");
         cart.clickRandomProduct(FDPageObjectData.weddingProductPLP);

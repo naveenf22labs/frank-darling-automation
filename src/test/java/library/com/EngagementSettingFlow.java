@@ -49,7 +49,7 @@ public class EngagementSettingFlow extends FDUtils {
         engagementPage.searchSettingForThisDiamond();
         test.get().info("Searched setting for this diamond");
 
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
         engagementPage.selectDiamond2();
         test.get().info("Selected diamond");

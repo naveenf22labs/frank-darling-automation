@@ -10,7 +10,7 @@ public class TennisBraceletsFlow extends FDUtils {
     @Test(groups = "jewelry", description = "Tested the flow of Tennis Bracelets. Selecting the bracelet, adding to the cart, and completing the checkout flow.")
     public void tennisBracelets() throws InterruptedException {
 
-        // ✅ Initialize ExtentTest
+        // Initialize ExtentTest
         ExtentTest logger = getExtentInstance().createTest("Tennis Bracelets Flow Test");
         test.set(logger);
 
@@ -21,11 +21,13 @@ public class TennisBraceletsFlow extends FDUtils {
         tennis.jewelryNav();
         test.get().info("Navigated to Jewelry section");
 
+        tennis.closePopUp();
+        test.get().info("Closed any popup if present");
+
         tennis.selectTennisNecklace();  // Assuming method is reused for Tennis Bracelet
         test.get().info("Selected Tennis Bracelet category");
 
-        tennis.closePopUp();
-        test.get().info("Closed any popup if present");
+
 
        // tennis.doubleClickReamazeWidget();
        // test.get().info("Interacted with Reamaze widget");

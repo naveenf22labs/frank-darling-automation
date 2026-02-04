@@ -22,9 +22,6 @@ public class MultipleDefaultDiamondsToCart extends FDUtils {
         test.get().info("Starting with setting.");
         cart.startWithSetting();
 
-        test.get().info("Interacting with Reamaze widget.");
-        cart.doubleClickReamazeWidget();
-
         test.get().info("Closing any visible popup.");
         cart.closePopUp();
 
@@ -35,6 +32,14 @@ public class MultipleDefaultDiamondsToCart extends FDUtils {
 
         test.get().info("Selecting a random band material.");
         cart.selectRandomBandMaterial();
+        cart.ringSizer();
+        test.get().info("Used ring sizer");
+
+        cart.bandMaterialDropdown();
+        test.get().info("Band material option selected");
+
+        // select if diamond type dropdown is present in PDP
+        cart.handleDiamondTypeIfPresent(test.get());
 
         test.get().info("Selecting this setting.");
         cart.selectThisSetting();
@@ -46,9 +51,17 @@ public class MultipleDefaultDiamondsToCart extends FDUtils {
 
         cart.clickEngagementLink();
         cart.startWithSetting();
-        cart.doubleClickReamazeWidget();
+       // cart.doubleClickReamazeWidget();
         cart.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
         cart.selectRandomBandMaterial();
+        cart.ringSizer();
+        test.get().info("Used ring sizer");
+
+        cart.bandMaterialDropdown();
+        test.get().info("Band material option selected");
+
+        // select if diamond type dropdown  is present in PDP
+        cart.handleDiamondTypeIfPresent(test.get());
         cart.selectThisSetting();
         cart.defaultDiamond();
         Thread.sleep(2000);

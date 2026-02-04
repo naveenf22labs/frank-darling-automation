@@ -95,7 +95,7 @@ public class FDPageObjectData
     	JavascriptExecutor js = (JavascriptExecutor) driver;
     	
     	js.executeScript("arguments[0].scrollTop = 0;", cartElement);
-    	js.executeScript("arguments[0].scrollIntoView(true);", cartElement); 
+    	js.executeScript("arguments[0].scrollIntoView(true);", cartElement);
     
     }
   
@@ -395,13 +395,13 @@ public class FDPageObjectData
     
     // random product selection code for weddings
   //  private By productItems=By.xpath("//div[@id='ring-container']");
-  public static  By weddingProductPLP=By.xpath("//div[contains(@class,'w-vw-1/2 h') and contains(@id,'wedding-rings')]");
+  public static  By weddingProductPLP=By.xpath("//a[contains(@class,'absolute inset-0 z-[2] block')]");
   
-  public static By jewelryProductsPLP = By.xpath("//div[contains(@class,'w-vw-1/2 h') and contains(@id,'engagement-rings')]");
+  public static By jewelryProductsPLP = By.xpath("//a[contains(@class,'absolute inset-0 hidden lg:block')]");
    
   
   //Diamond setting PLP
-  public static By diamondSettingPLP = By.xpath("//div[contains(@class,'w-vw-1/2 h')]");
+  public static By diamondSettingPLP = By.xpath("//a[contains(@class,'absolute inset-0 hidden lg:block')]");
 
 
       //Method to get the list of product items

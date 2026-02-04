@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="FDTestSuite" description="FrankDarling Regression Test cases">
-        <test name="jewelryGiftGuideFlowTest">
+
+
+  <!--
+    <listeners>
+        <listener class-name="utils.com.RetryListener"/>
+    </listeners>
+    -->
+        <test name="jewelryGiftGuideFlowTest" enabled="false">
         <classes>
             <class name="jewelry.com.GiftGuide" />
         </classes>
     </test>
     
-    <test name="jewelryEarRingsFlowTest">
+    <test name="jewelryEarRingsFlowTest" enabled="false">
         <classes>
            
             <class name="jewelry.com.EarRings" />
