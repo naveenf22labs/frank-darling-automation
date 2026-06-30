@@ -21,22 +21,14 @@ public class TennisBraceletsFlow extends FDUtils {
         tennis.jewelryNav();
         test.get().info("Navigated to Jewelry section");
 
-        tennis.closePopUp();
-        test.get().info("Closed any popup if present");
+//        tennis.closePopUp();
+//        test.get().info("Closed any popup if present");
 
         tennis.selectTennisNecklace();  // Assuming method is reused for Tennis Bracelet
         test.get().info("Selected Tennis Bracelet category");
 
-
-
-       // tennis.doubleClickReamazeWidget();
-       // test.get().info("Interacted with Reamaze widget");
-
         tennis.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
         test.get().info("Clicked a random bracelet product");
-
-//        tennis.selectRandomBandMaterial();
-//        test.get().info("Selected random band material");
 
         tennis.tennisTotalLength();
         test.get().info("Selected bracelet total length");

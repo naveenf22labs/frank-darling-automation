@@ -25,15 +25,12 @@ public class EngagementDiamondFlow extends FDUtils {
         engagementPage.startWithDiamond();
         test.get().info("Started flow with a Diamond");
 
-        engagementPage.closePopUp();
-        test.get().info("Closed any popup if present");
-
         engagementPage.searchDiamonds();
         test.get().info("Searched for diamonds");
 
 
 
-        Thread.sleep(3000);
+      //  Thread.sleep(3000);
 
         engagementPage.selectDiamond1();
         test.get().info("Selected a diamond");

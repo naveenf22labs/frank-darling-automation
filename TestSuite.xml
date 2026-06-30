@@ -15,16 +15,14 @@
             </run>
         </groups>
         <classes>
-            <class name="library.com.EngagementDiamondFlow" />
+
             <class name="library.com.EngagementSettingFlow" />
-          <class name="library.com.InPersonLocationDropdown" />
-            <class name="library.com.ClientServicesDropdowns" />
+            <class name="library.com.EngagementDiamondFlow" />
 
         </classes>
     </test>
 
-     Jewelry Tests (Necklaces and Tennis Bracelets)
-    <test name="JewelryFlowTests">
+     <test name="JewelryFlowTests">
         <groups>
             <run>
                 <include name="jewelry"/>

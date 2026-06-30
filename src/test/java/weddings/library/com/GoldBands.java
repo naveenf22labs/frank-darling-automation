@@ -27,25 +27,22 @@ public class GoldBands extends FDUtils {
         goldBandPage.selectGoldBand();
         test.get().info("Selected Gold Band option");
 
-        goldBandPage.closePopUp();
-        test.get().info("Closed any popup");
+//        goldBandPage.closePopUp();
+//        test.get().info("Closed any popup");
 
         goldBandPage.clickRandomProduct(FDPageObjectData.weddingProductPLP);
         test.get().info("Clicked random Gold Band product");
+//
 
-        // reusing diamond id locator in plp because id is same for all PLP products
-        // goldBandPage.selectDiamondBandProduct();
-        // Thread.sleep(2000);
-
-//        goldBandPage.selectRandomBandMaterial();
-//        test.get().info("Selected random band material");
+        goldBandPage.selectRandomBandMaterial();
+        test.get().info("Selected random band material");
 
         goldBandPage.ringSizer();
         test.get().info("Used ring sizer");
 
-        //will select stone/diamond type if its present.
+//        //will select stone/diamond type if its present.
         goldBandPage.handleDiamondTypeIfPresent(test.get());
-
+//
         goldBandPage.addToCartButton();
         test.get().info("Added product to cart");
 

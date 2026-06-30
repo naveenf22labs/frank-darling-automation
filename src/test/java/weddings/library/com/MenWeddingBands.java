@@ -24,8 +24,6 @@ public class MenWeddingBands extends FDUtils {
 
         weddingPage.selectMenWeddingoption();
         test.get().info("Selected Men Wedding Bands option");
-        weddingPage.closePopUp();
-        test.get().info("Closed any popup");
 
         weddingPage.clickRandomProduct(FDPageObjectData.weddingProductPLP);
         test.get().info("Clicked a random Men Wedding Band product");

@@ -24,9 +24,6 @@ public class EngagementSettingFlow extends FDUtils {
         engagementPage.startWithSetting();
         test.get().info("Started flow with a Setting");
 
-                engagementPage.closePopUp();
-        test.get().info("Closed any pop-up");
-
         engagementPage.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
         test.get().info("Clicked on a random product");
 
@@ -54,7 +51,7 @@ public class EngagementSettingFlow extends FDUtils {
         engagementPage.selectDiamond2();
         test.get().info("Selected diamond");
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         engagementPage.addStoneToSetting();
         test.get().info("Added stone to setting");

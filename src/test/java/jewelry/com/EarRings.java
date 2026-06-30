@@ -25,9 +25,6 @@ public class EarRings extends FDUtils
         earRings.earRingsOption();
         test.get().info("Selected the Earring category");
 
-        earRings.closePopUp();
-        test.get().info("Closed any pop-up that appeared");
-
         earRings.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
         test.get().info("Clicked a random product from Product Listing Page");
 
@@ -37,8 +34,9 @@ public class EarRings extends FDUtils
         earRings.totalCaratWeight();
         test.get().info("Selected total carat weight");
 
-        earRings.stoneType();
-        test.get().info("Selected stone type");
+        //If required we can use this method, for now not required.
+//        earRings.stoneType();
+//        test.get().info("Selected stone type");
 
         earRings.addToCartButton();
         test.get().info("Clicked on Add to Cart");

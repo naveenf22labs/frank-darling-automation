@@ -14,7 +14,9 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 
 public class FDPageObjectData
 {
@@ -30,7 +32,8 @@ public class FDPageObjectData
  
     public By searchDiamondsOption = By.xpath("//span[text()='SEARCH DIAMONDS']");
     public By reamazeWidgetIcon = By.id("reamaze-widget-icon");
-    public By closePopUpButton = By.className("klaviyo-close-form");
+    public By closePopUpButton = By.xpath("//button[@aria-label='Close dialog']");
+   // public By closePopUpButton = By.className("klaviyo-close-form");
     public By diamondRow = By.xpath("(//div[starts-with(@name, 'diamond-row')])[1]"); //start with a flow diamond
     public By diamondRowForSetting=By.xpath("(//div[starts-with(@name, 'diamond')])[1]");// Start with a setting flow
     public By selectThisStoneButton = By.xpath("(//button[text()='Select this stone'])[1]");
@@ -188,21 +191,29 @@ public class FDPageObjectData
         driver.findElement(diamondRowForSetting).click();
     }
 
-    public void selectThisStone()
-    {
-    	WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
-        WebElement selectingStone = wait1.until(ExpectedConditions.elementToBeClickable(selectThisStoneButton));
-        selectingStone.click();
-       // driver.findElement(selectThisStoneButton).click();
-    }
+//    public void selectThisStone()
+//    {
+//    	WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
+//        WebElement selectingStone = wait1.until(ExpectedConditions.elementToBeClickable(selectThisStoneButton));
+//        selectingStone.click();
+//       // driver.findElement(selectThisStoneButton).click();
+//    }
+public void selectThisStone()
+{
+    safeClick(selectThisStoneButton);
+}
     //select this setting button 
     public void selectThisSetting() {
     	driver.findElement(selectThisSettingButton).click();
     }
             //can use this method  to entire project bcz i developed with unique xpath
-    public void searchSettingForThisDiamond() {
-        driver.findElement(searchSettingButton).click();
-    }
+//    public void searchSettingForThisDiamond() {
+//        driver.findElement(searchSettingButton).click();
+//    }
+            public void searchSettingForThisDiamond()
+            {
+                safeClick(searchSettingButton);
+            }
     
     public void defaultDiamond()
     {
@@ -213,23 +224,36 @@ public class FDPageObjectData
         driver.findElement(harperRingLink).click();
     }
         // Diamond flow
-    public void addSettingToStone() {
-        driver.findElement(addSettingToStoneButton).click();
-    }
+//    public void addSettingToStone() {
+//        driver.findElement(addSettingToStoneButton).click();
+//    }
+        public void addSettingToStone()
+        {
+            safeClick(addSettingToStoneButton);
+        }
     //Setting flow
-    public void addStoneToSetting() 
+//    public void addStoneToSetting()
+//    {
+//        driver.findElement(addStoneToSettingButton).click();
+//    }
+
+    public void addStoneToSetting()
     {
-        driver.findElement(addStoneToSettingButton).click();
+        safeClick(addStoneToSettingButton);
     }
     
     
-    public void proceedToCheckout() {
-    	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-         WebElement checkout = wait.until(ExpectedConditions.elementToBeClickable(checkoutButton));
-         checkout.click();
-       // driver.findElement(checkoutButton).click();     
-        
-    }
+//    public void proceedToCheckout() {
+//    	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//         WebElement checkout = wait.until(ExpectedConditions.elementToBeClickable(checkoutButton));
+//         checkout.click();
+//       // driver.findElement(checkoutButton).click();
+//
+//    }
+public void proceedToCheckout()
+{
+    safeClick(checkoutButton);
+}
     
     public void startWithSetting()
     {
@@ -329,27 +353,37 @@ public class FDPageObjectData
     {
     	driver.findElement(necklesXpath).click();
     }
-    public void selectThisNecklaceButton()
-    {
-    driver.findElement(necklaceButtonXpath).click();
-    }
-    public void selectDiamondFromNecklacesPlp() 
-    {
-    	 WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
-         WebElement necklacePlp = wait1.until(ExpectedConditions.elementToBeClickable(selectDiamondForNecklace));
-         necklacePlp.click();
-    	//driver.findElement(selectDiamondForNecklace).click();
-    }
-    
-    public void addDiamondToNecklaceButton()
-    {
-
-   	 WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
-        WebElement diamondTonecklace = wait1.until(ExpectedConditions.elementToBeClickable(addDiamondToNecklaceButtonXpath));
-        diamondTonecklace.click();
-    	//driver.findElement(addDiamondToNecklaceButtonXpath).click();
-    }
-    
+//    public void selectThisNecklaceButton()
+//    {
+//    driver.findElement(necklaceButtonXpath).click();
+//    }
+//    public void selectDiamondFromNecklacesPlp()
+//    {
+//    	 WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
+//         WebElement necklacePlp = wait1.until(ExpectedConditions.elementToBeClickable(selectDiamondForNecklace));
+//         necklacePlp.click();
+//    	//driver.findElement(selectDiamondForNecklace).click();
+//    }
+public void selectThisNecklaceButton()
+{
+    safeClick(necklaceButtonXpath);
+}
+public void selectDiamondFromNecklacesPlp()
+{
+    safeClick(selectDiamondForNecklace);
+}
+//    public void addDiamondToNecklaceButton()
+//    {
+//
+//   	 WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
+//        WebElement diamondTonecklace = wait1.until(ExpectedConditions.elementToBeClickable(addDiamondToNecklaceButtonXpath));
+//        diamondTonecklace.click();
+//    	//driver.findElement(addDiamondToNecklaceButtonXpath).click();
+//    }
+public void addDiamondToNecklaceButton()
+{
+    safeClick(addDiamondToNecklaceButtonXpath);
+}
     public void selectTennisNecklace()
     {
     	driver.findElement(tennisNecklaceXpath).click();
@@ -397,7 +431,7 @@ public class FDPageObjectData
   //  private By productItems=By.xpath("//div[@id='ring-container']");
   public static  By weddingProductPLP=By.xpath("//a[contains(@class,'absolute inset-0 z-[2] block')]");
   
-  public static By jewelryProductsPLP = By.xpath("//a[contains(@class,'absolute inset-0 hidden lg:block')]");
+  public static By jewelryProductsPLP = By.xpath("//a[contains(@class,'absolute inset-0')]");
    
   
   //Diamond setting PLP
@@ -410,32 +444,6 @@ public class FDPageObjectData
      return driver.findElements(productLocator);
      
     }
-
-//Method to scroll to the bottom of the page until all products are loaded
- /* public void scrollToEndOfPage(By productLocator) throws InterruptedException
-  {
-   JavascriptExecutor js = (JavascriptExecutor) driver;
-   long lastHeight = (long) js.executeScript("return document.body.scrollHeight");
-
-   while (true)
-   {
-       // Scroll to the bottom of the page
-       js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-       Thread.sleep(3000); // Adjust based on page load speed
-
-       // Wait for new products to load (Optional - depending on page behavior)
-       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-       wait.until(ExpectedConditions.visibilityOfElementLocated(productLocator)); // Ensure products are visible
-
-       // Check if new products are loaded by comparing scroll height
-       long newHeight = (long) js.executeScript("return document.body.scrollHeight");
-       if (newHeight == lastHeight)
-       {
-           break; // Exit the loop when no new products are loaded
-       }
-       lastHeight = newHeight;
-   }
-} */
 public void scrollToEndOfPage() throws InterruptedException {
     JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -443,45 +451,84 @@ public void scrollToEndOfPage() throws InterruptedException {
     js.executeScript("window.scrollBy(0, 700);");
 
     // Wait briefly to allow UI to adjust or images to load
-    Thread.sleep(1000);
+    Thread.sleep(300);
 }
-
-
-
-
     //Method to select a random product from the PLP
       public WebElement selectRandomProduct(By productLocator)
       {
           List<WebElement> products = getProductList(productLocator);
+          System.out.println("Products found "+ products.size());
+          if(products.isEmpty()){
+              throw new RuntimeException("No products found for locator "+productLocator );
+          }
            Random rand = new Random();
            int randomIndex = rand.nextInt(products.size());
              return products.get(randomIndex);
      }
 
      //Method to click on a random product
-    public void clickRandomProduct(By productLocator) throws InterruptedException
-    {
-      // Scroll to the end of the page first
-      // scrollToEndOfPage(productLocator);
+//    public void clickRandomProduct(By productLocator) throws InterruptedException
+//    {
+//      // Scroll to the end of the page first
+//
+//        scrollToEndOfPage();
+//       // Select and click a random product
+//       WebElement randomProduct = selectRandomProduct(productLocator);
+//         randomProduct.click();
+//   }
+
+    public void clickRandomProduct(By productLocator) throws InterruptedException {
+
         scrollToEndOfPage();
-           Thread.sleep(2000);
-       // Select and click a random product
-       WebElement randomProduct = selectRandomProduct(productLocator);
-         randomProduct.click();
-   }
+
+        List<WebElement> products = getProductList(productLocator);
+
+        if (products.isEmpty()) {
+            throw new RuntimeException("No products found.");
+        }
+
+        int randomIndex = new Random().nextInt(products.size());
+
+        WebElement product = products.get(randomIndex);
+
+        for (int i = 0; i < 3; i++) {
+
+            try {
+
+                closePopupIfPresent();
+
+                ((JavascriptExecutor) driver)
+                        .executeScript("arguments[0].scrollIntoView({block:'center'});", product);
+
+                product.click();
+
+                return;
+
+
+            }
+
+            catch (ElementClickInterceptedException e) {
+
+                closePopupIfPresent();
+
+            }
+
+            catch (StaleElementReferenceException e) {
+
+                products = getProductList(productLocator);
+
+                product = products.get(randomIndex);
+
+            }
+
+        }
+
+        throw new RuntimeException("Unable to click random product.");
+
+    }
    
 
-//    public void clickRandomJewelryProduct() throws InterruptedException
-//    {
-//    	 scrollToEndOfPage();
-//        selectRandomProduct();
-//    }
-//
-//    public By weddingRingLocator = By.xpath("//div[contains(@class,'w-vw-1/2 h') and contains(@id,'wedding-rings')]");
-//
-//    public void clickRandomWeddingRing(By locator) throws InterruptedException {
-//        clickRandomProduct(weddingRingLocator);
-//    }
+
 
     //booking dropdowns
     private By appointmentsXpath=By.xpath("//span[text()='Showrooms']");
@@ -600,5 +647,82 @@ public void selectRandomOption(By dropdownLocator, String dropdownName) {
             testLogger.warning("An error occurred while checking for 'Diamond Type': " + e.getMessage());
         }
     }
+    // ==========================
+// Close Klaviyo popup if present
+// ==========================
+    private void closePopupIfPresent() {
 
+        try {
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+
+            WebElement closeButton = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//button[@aria-label='Close dialog']")
+                    ));
+
+            ((JavascriptExecutor) driver)
+                    .executeScript("arguments[0].click();", closeButton);
+
+            System.out.println("Popup closed.");
+
+        }
+        catch (TimeoutException e) {
+
+            // Popup not displayed.
+        }
+        catch (Exception e) {
+
+            System.out.println("Unable to close popup: " + e.getMessage());
+
+        }
+
+    }
+
+
+    // ==========================
+// Safe Click Method
+// ==========================
+    public void safeClick(By locator) {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+        for (int i = 0; i < 3; i++) {
+
+            try {
+
+                closePopupIfPresent();
+
+                WebElement element = wait.until(
+                        ExpectedConditions.elementToBeClickable(locator));
+
+                ((JavascriptExecutor) driver)
+                        .executeScript("arguments[0].scrollIntoView({block:'center'});", element);
+
+                element.click();
+
+                return;
+
+            }
+
+            catch (ElementClickInterceptedException e) {
+
+                closePopupIfPresent();
+
+            }
+
+            catch (TimeoutException e) {
+
+                closePopupIfPresent();
+
+            }
+
+            catch (StaleElementReferenceException e) {
+
+            }
+
+        }
+
+        throw new RuntimeException("Unable to click: " + locator);
+    }
 }

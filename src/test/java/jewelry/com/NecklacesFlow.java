@@ -24,10 +24,7 @@ public class NecklacesFlow extends FDUtils {
         necklaces.selectnecklesOption();
         test.get().info("Selected the Necklaces option");
 
-        necklaces.closePopUp();
-        test.get().info("Closed any pop-up if present");
-
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
 
         necklaces.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
         test.get().info("Clicked on a random necklace product");
@@ -41,17 +38,21 @@ public class NecklacesFlow extends FDUtils {
         necklaces.searchSettingForThisDiamond();
         test.get().info("Searched setting for selected diamond");
 
-        Thread.sleep(2000);
+        // can use if needed
+//        necklaces.closePopUp();
+//        test.get().info("Closed any pop-up if present");
+
+       // Thread.sleep(2000);
 
         necklaces.selectDiamondFromNecklacesPlp();
         test.get().info("Selected diamond from necklaces PLP");
 
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
 
         necklaces.addDiamondToNecklaceButton();
         test.get().info("Added diamond to necklace");
 
-        Thread.sleep(2000);
+       // Thread.sleep(2000);
 
         necklaces.proceedToCheckout();
         test.get().info("Proceeded to checkout");

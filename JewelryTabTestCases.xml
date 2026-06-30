@@ -13,7 +13,7 @@
         </classes>
     </test>
     
-    <test name="jewelryEarRingsFlowTest" enabled="false">
+    <test name="jewelryEarRingsFlowTest">
         <classes>
            
             <class name="jewelry.com.EarRings" />

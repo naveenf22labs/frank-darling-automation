@@ -24,9 +24,6 @@ public class DiamondBands extends FDUtils {
         diamondBand.selectDiamondBand();
         test.get().info("Selected Diamond Band option");
 
-        diamondBand.closePopUp();
-        test.get().info("Closed any popup");
-
         diamondBand.clickRandomProduct(FDPageObjectData.weddingProductPLP);
         test.get().info("Clicked random diamond band product");
 

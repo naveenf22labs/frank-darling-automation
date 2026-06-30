@@ -24,9 +24,6 @@ public class AnniversaryRings extends FDUtils {
         anniversary.selectAnniversaryOption();
         test.get().info("Selected Anniversary Rings option");
 
-        anniversary.closePopUp();
-        test.get().info("Closed any pop-up");
-
         // anniversary.scrollToEndOfPage();
         anniversary.clickRandomProduct(FDPageObjectData.weddingProductPLP);
         test.get().info("Clicked random Anniversary ring product");

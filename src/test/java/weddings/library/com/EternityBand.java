@@ -24,9 +24,6 @@ public class EternityBand extends FDUtils {
         eternityBand.selectEternityBand();
         test.get().info("Selected Eternity Band option");
 
-        eternityBand.closePopUp();
-        test.get().info("Closed any popup");
-
         eternityBand.clickRandomProduct(FDPageObjectData.weddingProductPLP);
         test.get().info("Clicked random Eternity Band product");
 

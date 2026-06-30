@@ -24,9 +24,6 @@ public class StackingRings extends FDUtils {
         stacking.stackingRings();
         test.get().info("Selected Stacking Rings option");
 
-        stacking.closePopUp();
-        test.get().info("Closed any popup if present");
-
         stacking.clickRandomProduct(FDPageObjectData.weddingProductPLP);
         test.get().info("Clicked random Stacking Ring product");
 
