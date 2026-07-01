@@ -398,11 +398,18 @@ public void proceedToCheckout()
     }
     //-----------------------------------------------Jewelry--------------------------
     
-    public void jewelryNav()
-    {
-    	driver.findElement(jewelryXpath).click();
-    }
-    
+//    public void jewelryNav()
+//    {
+//    	driver.findElement(jewelryXpath).click();
+//    }
+public void jewelryNav() {
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+    WebElement jewelry = wait.until(
+            ExpectedConditions.elementToBeClickable(jewelryXpath));
+
+    jewelry.click();
+}
     public void earRingsOption()
     {
     	driver.findElement(earRingsXpath).click();
