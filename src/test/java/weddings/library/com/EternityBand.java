@@ -39,11 +39,7 @@ public class EternityBand extends FDUtils {
 
         eternityBand.addToCartButton();
         test.get().info("Added product to cart");
+        eternityBand.completeCheckoutFlow(eternityBand, test.get());
 
-        eternityBand.proceedToCheckout();
-        test.get().info("Proceeded to checkout");
-
-        eternityBand.checkoutValidation();
-        test.get().pass("Eternity Band flow test completed and validated successfully");
     }
 }

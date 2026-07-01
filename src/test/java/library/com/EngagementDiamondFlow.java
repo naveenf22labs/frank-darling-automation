@@ -40,7 +40,7 @@ public class EngagementDiamondFlow extends FDUtils {
 
         engagementPage.searchSettingForThisDiamond();
         test.get().info("Searched for setting to match selected diamond");
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
         engagementPage.clickRandomProduct(FDPageObjectData.diamondSettingPLP);
         test.get().info("Clicked a random setting product");
@@ -58,11 +58,7 @@ public class EngagementDiamondFlow extends FDUtils {
 
         engagementPage.addSettingToStone();
         test.get().info("Added selected setting to the stone");
+        engagementPage.completeCheckoutFlow(engagementPage, test.get());
 
-        engagementPage.proceedToCheckout();
-        test.get().info("Proceeded to checkout");
-
-        engagementPage.checkoutValidation();
-        test.get().pass("Engagement Diamond flow test completed and validated successfully");
     }
 }

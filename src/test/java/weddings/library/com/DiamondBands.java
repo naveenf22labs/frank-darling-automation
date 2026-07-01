@@ -40,10 +40,7 @@ public class DiamondBands extends FDUtils {
         diamondBand.addToCartButton();
         test.get().info("Added product to cart");
 
-        diamondBand.proceedToCheckout();
-        test.get().info("Proceeded to checkout");
+        diamondBand.completeCheckoutFlow(diamondBand, test.get());
 
-        diamondBand.checkoutValidation();
-        test.get().pass("Diamond Bands flow test completed and validated successfully");
     }
 }

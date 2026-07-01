@@ -45,11 +45,7 @@ public class GoldBands extends FDUtils {
 //
         goldBandPage.addToCartButton();
         test.get().info("Added product to cart");
+        goldBandPage.completeCheckoutFlow(goldBandPage, test.get());
 
-        goldBandPage.proceedToCheckout();
-        test.get().info("Proceeded to checkout");
-
-        goldBandPage.checkoutValidation();
-        test.get().pass("Gold Bands flow test completed and validated successfully");
     }
 }

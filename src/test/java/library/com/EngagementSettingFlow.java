@@ -46,22 +46,29 @@ public class EngagementSettingFlow extends FDUtils {
         engagementPage.searchSettingForThisDiamond();
         test.get().info("Searched setting for this diamond");
 
-        Thread.sleep(3000);
+        //Thread.sleep(4000);
 
         engagementPage.selectDiamond2();
         test.get().info("Selected diamond");
 
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
 
         engagementPage.addStoneToSetting();
         test.get().info("Added stone to setting");
 
-        Thread.sleep(3000);
+        // Capture cart total before leaving the cart
+        String cartTotal = engagementPage.getCartTotalPrice();
+      //  test.get().info("Cart Total: " + cartTotal);
 
+
+// Proceed to checkout
         engagementPage.proceedToCheckout();
         test.get().info("Proceeded to checkout");
 
-        engagementPage.checkoutValidation();
+// Validate checkout title and price
+        engagementPage.checkoutValidation(cartTotal);
+
         test.get().pass("Engagement Setting flow test completed and validated successfully");
+
     }
 }

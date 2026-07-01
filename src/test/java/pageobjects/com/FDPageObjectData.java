@@ -1,5 +1,6 @@
 package pageobjects.com;
 
+import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +18,8 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
+
+import static utils.com.FDUtils.test;
 
 public class FDPageObjectData
 {
@@ -163,7 +166,8 @@ public class FDPageObjectData
     }
 
     public void searchDiamonds() {
-        driver.findElement(searchDiamondsOption).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(searchDiamondsOption)).click();
     }
 
     public void doubleClickReamazeWidget() throws InterruptedException {
@@ -184,11 +188,12 @@ public class FDPageObjectData
     }
     //Start with a Diamond flow
     public void selectDiamond1() {
-        driver.findElement(diamondRow).click();
+       // driver.findElement(diamondRow).click();
+        safeClick(diamondRow);
     }
-    
+
     public void selectDiamond2() {
-        driver.findElement(diamondRowForSetting).click();
+        safeClick(diamondRowForSetting);
     }
 
 //    public void selectThisStone()
@@ -250,6 +255,26 @@ public void selectThisStone()
 //       // driver.findElement(checkoutButton).click();
 //
 //    }
+//By cartTotalPrice = By.xpath("//span[contains(text(),'CART TOTAL')]/following::span[1]");
+By cartTotalPrice = By.id("cart-total-price");
+
+    public String getCartTotalPrice() {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(cartTotalPrice))
+                .getText()
+                .trim();
+    }
+    By checkoutTotalPrice = By.xpath("//span[normalize-space()='USD']/following::strong[2]");
+    public String getCheckoutTotalPrice() {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(checkoutTotalPrice))
+                .getText()
+                .trim();
+    }
 public void proceedToCheckout()
 {
     safeClick(checkoutButton);
@@ -259,7 +284,38 @@ public void proceedToCheckout()
     {
     	driver.findElement(startWithSettingOption).click();
     }
-    
+
+
+
+    public void checkoutValidation(String cartTotal)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+        // Wait until checkout page is loaded
+        wait.until(ExpectedConditions.titleIs("Checkout - FD"));
+
+        // Validate page title
+        Assert.assertEquals(driver.getTitle(), "Checkout - FD");
+
+        // Get checkout total
+        String checkoutTotal = getCheckoutTotalPrice();
+
+        // Print in console
+        System.out.println("Cart Total      : " + cartTotal);
+        System.out.println("Checkout Total  : " + checkoutTotal);
+
+        // Log in Extent Report
+        test.get().info("Cart Total: " + cartTotal);
+        test.get().info("Checkout Total: " + checkoutTotal);
+
+        // Validate prices
+        Assert.assertEquals(checkoutTotal, cartTotal,
+                "Cart Total and Checkout Total do not match.");
+
+        test.get().pass("Price validation successful.");
+
+    }
+
     public void checkoutValidation() throws InterruptedException
     {
         Thread.sleep(3000);
@@ -268,10 +324,19 @@ public void proceedToCheckout()
     	String expectedTitle="Checkout - FD";
     	String currentTitle=driver.getTitle();
         Assert.assertEquals(currentTitle, expectedTitle);
-       // Assert.assertTrue(currentTitle.contains("Checkout - FD"));
+  }
+    public void completeCheckoutFlow(FDPageObjectData page, ExtentTest test) {
 
+        String cartTotal = page.getCartTotalPrice();
+       // test.info("Cart Total: " + cartTotal);
 
+        page.proceedToCheckout();
+        test.info("Proceeded to checkout");
+
+        page.checkoutValidation(cartTotal);
+        test.pass("Checkout validation completed");
     }
+
     //-------------------Wedding properties-----------------
 	  //Selecting wedding from nav
     public void clickWeddingLink()
@@ -435,7 +500,7 @@ public void addDiamondToNecklaceButton()
    
   
   //Diamond setting PLP
-  public static By diamondSettingPLP = By.xpath("//a[contains(@class,'absolute inset-0 hidden lg:block')]");
+  public static By diamondSettingPLP = By.xpath("//a[contains(@class,'absolute inset-0 ')]");
 
 
       //Method to get the list of product items
@@ -726,3 +791,4 @@ public void selectRandomOption(By dropdownLocator, String dropdownName) {
         throw new RuntimeException("Unable to click: " + locator);
     }
 }
+

@@ -44,11 +44,7 @@ public class AnniversaryRings extends FDUtils {
 
         anniversary.addToCartButton();
         test.get().info("Added product to cart");
+        anniversary.completeCheckoutFlow(anniversary, test.get());
 
-        anniversary.proceedToCheckout();
-        test.get().info("Proceeded to checkout");
-
-        anniversary.checkoutValidation();
-        test.get().pass("Anniversary Ring flow test completed and validated successfully");
     }
 }

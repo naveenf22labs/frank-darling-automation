@@ -41,10 +41,23 @@ public class EarRings extends FDUtils
         earRings.addToCartButton();
         test.get().info("Clicked on Add to Cart");
 
-        earRings.proceedToCheckout();
-        test.get().info("Proceeded to Checkout");
+        earRings.completeCheckoutFlow(earRings, test.get());
+//        // Capture cart total before leaving the cart
+//        String cartTotal = earRings.getCartTotalPrice();
+//        //  test.get().info("Cart Total: " + cartTotal);
+//
+//
+//// Proceed to checkout
+//        earRings.proceedToCheckout();
+//        test.get().info("Proceeded to checkout");
+//
+//// Validate checkout title and price
+//        earRings.checkoutValidation(cartTotal);
 
-        earRings.checkoutValidation();
-        test.get().pass("Checkout validation completed successfully");
+//        earRings.proceedToCheckout();
+//        test.get().info("Proceeded to Checkout");
+//
+//        earRings.checkoutValidation();
+//        test.get().pass("Checkout validation completed successfully");
     }
 }

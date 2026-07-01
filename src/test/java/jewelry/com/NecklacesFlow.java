@@ -51,13 +51,25 @@ public class NecklacesFlow extends FDUtils {
 
         necklaces.addDiamondToNecklaceButton();
         test.get().info("Added diamond to necklace");
+        necklaces.completeCheckoutFlow(necklaces, test.get());
 
-       // Thread.sleep(2000);
 
-        necklaces.proceedToCheckout();
-        test.get().info("Proceeded to checkout");
+//        String cartTotal = necklaces.getCartTotalPrice();
+        //  test.get().info("Cart Total: " + cartTotal);
 
-        necklaces.checkoutValidation();
-        test.get().pass("Necklace flow test completed and validated successfully");
+
+//// Proceed to checkout
+//        necklaces.proceedToCheckout();
+//        test.get().info("Proceeded to checkout");
+//
+//// Validate checkout title and price
+//        necklaces.checkoutValidation(cartTotal);
+
+
+//        necklaces.proceedToCheckout();
+//        test.get().info("Proceeded to checkout");
+//
+//        necklaces.checkoutValidation();
+//        test.get().pass("Necklace flow test completed and validated successfully");
     }
 }

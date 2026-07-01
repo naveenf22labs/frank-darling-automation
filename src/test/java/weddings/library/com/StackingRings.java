@@ -39,10 +39,6 @@ public class StackingRings extends FDUtils {
         stacking.addToCartButton();
         test.get().info("Added product to cart");
 
-        stacking.proceedToCheckout();
-        test.get().info("Proceeded to checkout");
-
-        stacking.checkoutValidation();
-        test.get().pass("Stacking Rings flow test completed successfully");
+        stacking.completeCheckoutFlow(stacking, test.get());
     }
 }

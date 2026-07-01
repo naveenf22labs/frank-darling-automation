@@ -86,8 +86,11 @@ public class FDUtils
 	}
 
 	@AfterSuite(alwaysRun = true)
-	public void flushReport() {
-		getExtentInstance().flush();
+	public void flushReport()
+	{
+		ExtentManager.getInstance().flush();
+
+		//getExtentInstance().flush();
 	}
 
 

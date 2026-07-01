@@ -38,10 +38,12 @@ public class TennisBraceletsFlow extends FDUtils {
         tennis.addToCartButton();
         test.get().info("Clicked Add to Cart");
 
-        tennis.proceedToCheckout();
-        test.get().info("Proceeded to Checkout");
+        tennis.completeCheckoutFlow(tennis,  test.get());
 
-        tennis.checkoutValidation();
-        test.get().pass("Tennis Bracelets flow test completed and validated successfully");
-    }
+//        tennis.proceedToCheckout();
+//        test.get().info("Proceeded to Checkout");
+//
+//        tennis.checkoutValidation();
+//        test.get().pass("Tennis Bracelets flow test completed and validated successfully");
+   }
 }

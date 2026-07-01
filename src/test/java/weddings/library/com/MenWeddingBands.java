@@ -41,10 +41,7 @@ public class MenWeddingBands extends FDUtils {
         weddingPage.addToCartButton();
         test.get().info("Added product to cart");
 
-        weddingPage.proceedToCheckout();
-        test.get().info("Proceeded to checkout");
+        weddingPage.completeCheckoutFlow(weddingPage, test.get());
 
-        weddingPage.checkoutValidation();
-        test.get().pass("Men Wedding Bands flow test completed and validated successfully");
     }
 }
