@@ -2,6 +2,7 @@ package utils.com;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,27 +11,23 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 
-import java.time.Duration;
+public class FDUtils {
 
-
-public class FDUtils
-{
-	
 	public static WebDriver driver;
 	public static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
-    private static ExtentReports extent;
+	private static ExtentReports extent;
 
-    // Initialize ExtentReports instance
-    public static ExtentReports getExtentInstance() {
-        if (extent == null) {
-            extent = ExtentManager.getInstance();
-        }
-        return extent;
-    }
+	// Initialize ExtentReports instance
+	public static ExtentReports getExtentInstance() {
+		if (extent == null) {
+			extent = ExtentManager.getInstance();
+		}
+		return extent;
+	}
 
 	@BeforeMethod(alwaysRun = true)
-	public void launchUrl()
-	{
+	public void launchUrl() throws InterruptedException {
+
 		ChromeOptions options = new ChromeOptions();
 
 		options.addArguments("--incognito");
@@ -41,34 +38,36 @@ public class FDUtils
 			options.addArguments("--headless=new");
 		}
 
+		options.addArguments("--window-size=1920,1080");
+		options.addArguments("--start-maximized");
+		options.addArguments("--force-device-scale-factor=1");
+		options.addArguments("--high-dpi-support=1");
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
-		options.addArguments("--window-size=1920,1080");
 
 		driver = new ChromeDriver(options);
-//		//System.out.println(" Launching browser in @BeforeMethod");
-//		ChromeOptions options = new ChromeOptions();
-//		 options.addArguments("--incognito");
-//		// options.addArguments("--headless=new");
-//		options.addArguments("--no-sandbox");
-//        	options.addArguments("--disable-dev-shm-usage");
-//        	options.addArguments("--window-size=1920,1080");
-//
-//		 driver=new ChromeDriver(options);
-	  //  driver.manage().window().setSize(new org.openqa.selenium.Dimension(1920, 1080)); // Set size for Full HD resolution
+
+		// Force desktop viewport
+		driver.manage().window().setSize(new Dimension(1920, 1080));
 
 		driver.manage().deleteAllCookies();
-		driver.manage().window().maximize();
-		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
+
+		System.out.println("Window Size: " + driver.manage().window().getSize());
+
 		driver.get("https://frankdarling.com");
-		// System.out.println("Driver initialized: " + driver);
+
+		// Wait for homepage to load
+		Thread.sleep(3000);
+
+		// Capture homepage screenshot for GitHub debugging
+		ScreenshotUtil.captureScreenshot(driver, "HomePage");
 	}
 
 	@AfterMethod(alwaysRun = true)
 	public void tearDownAndClose(ITestResult result) {
-		ExtentTest logger = test.get(); // Get the test instance for the current thread
 
-		// Log based on result status
+		ExtentTest logger = test.get();
+
 		if (result.getStatus() == ITestResult.FAILURE) {
 			logger.fail("Test Failed: " + result.getThrowable());
 			ScreenshotUtil.captureScreenshot(driver, result.getName());
@@ -78,20 +77,13 @@ public class FDUtils
 			logger.skip("Test Skipped: " + result.getThrowable());
 		}
 
-		// Quit driver
 		if (driver != null) {
 			driver.quit();
 		}
-
 	}
 
 	@AfterSuite(alwaysRun = true)
-	public void flushReport()
-	{
+	public void flushReport() {
 		ExtentManager.getInstance().flush();
-
-		//getExtentInstance().flush();
 	}
-
-
 }
