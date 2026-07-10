@@ -26,8 +26,8 @@ public class DiamondsCombinationToCart extends FDUtils {
         test.get().info("Searching for diamonds.");
         cart.searchDiamonds();
 
-        test.get().info("Closing popup if present.");
-        cart.closePopUp();
+//        test.get().info("Closing popup if present.");
+//        cart.closePopUp();
 
         test.get().info("Selecting the first diamond.");
         cart.selectDiamond1();
@@ -38,6 +38,7 @@ public class DiamondsCombinationToCart extends FDUtils {
         test.get().info("Searching for settings for the selected diamond.");
         cart.searchSettingForThisDiamond();
 
+        Thread.sleep(2000);
         test.get().info("Clicking a random product from diamond setting PLP.");
         cart.clickRandomProduct(FDPageObjectData.diamondSettingPLP);
 
