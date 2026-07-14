@@ -28,10 +28,6 @@ public class AnniversaryRings extends FDUtils {
         anniversary.clickRandomProduct(FDPageObjectData.weddingProductPLP);
         test.get().info("Clicked random Anniversary ring product");
 
-        // anniversary.selectAnniversaryPlp();
-
-//        anniversary.doubleClickReamazeWidget();
-//        test.get().info("Interacted with Reamaze widget");
 
         anniversary.selectRandomBandMaterial();
         test.get().info("Selected random band material");

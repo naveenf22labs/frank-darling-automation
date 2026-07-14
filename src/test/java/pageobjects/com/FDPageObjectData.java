@@ -110,31 +110,61 @@ public class FDPageObjectData
         return By.xpath("(//span[@class='mr-1.5 cursor-pointer']//*[name()='svg'])[" + index + "]");
     }
 // New Removal code
-    private By allCartRemoveIcons=By.xpath("(//span[@class='mr-1.5 cursor-pointer']//*[name()='svg'])");
-    public void removeAllProductsFromCart()
-    {
-    	driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        int removedCount = 0;
-        List<WebElement> removeIcons = driver.findElements(allCartRemoveIcons);
+   // private By allCartRemoveIcons=By.xpath("(//span[contains(@class,'mr-1.5')])");
+    By allCartRemoveIcons = By.xpath("//div[contains(@class,'flex items-center')]//*[name()='svg' and contains(@class,'w-6')]"
+    );
 
-        while (!removeIcons.isEmpty()) {
-            try {
-                removeIcons.get(0).click();
-                removedCount++;
-                Thread.sleep(1000);
-                removeIcons = driver.findElements(allCartRemoveIcons);
-            } catch (Exception e) {
-                System.out.println("Error after removing " + removedCount + " items: " + e.getMessage());
+By cartContainer = By.xpath("//div[@role='dialog' and contains(@class,'overflow-y-scroll')]");
+
+    public void removeAllProductsFromCart() throws InterruptedException {
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        WebElement cart = driver.findElement(cartContainer);
+
+        js.executeScript("arguments[0].scrollTop = 100;", cart);
+
+        Thread.sleep(1000);
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        int removedCount = 0;
+
+        while (true) {
+
+            List<WebElement> removeIcons = driver.findElements(allCartRemoveIcons);
+
+            if (removeIcons.isEmpty()) {
                 break;
             }
+
+            int currentSize = removeIcons.size();
+
+            WebElement removeButton = removeIcons.get(0);
+
+            js.executeScript(
+                    "arguments[0].scrollIntoView({block: 'center'});",
+                    removeButton
+            );
+
+            wait.until(ExpectedConditions.elementToBeClickable(removeButton));
+
+            removeButton.click();
+
+            wait.until(ExpectedConditions.numberOfElementsToBeLessThan(
+                    allCartRemoveIcons,
+                    currentSize
+            ));
+
+            removedCount++;
         }
 
         System.out.println("Total products removed from cart: " + removedCount);
     }
-
-    
     //New Removal code
-    
+    public boolean isCartEmpty() {
+        return driver.findElements(allCartRemoveIcons).isEmpty();
+    }
    public void removeProductFromCart(int index) throws InterruptedException 
     {
     	for (int i=1; i<=3;  i++)
@@ -150,12 +180,6 @@ public class FDPageObjectData
    public FDPageObjectData(WebDriver driver) {
        this.driver = driver;
    }
-
-   
-   
-//    public FDPageObjectData(WebDriver driver) {
-//        this.driver = (ChromeDriver) driver;
-//    }
 
     public void clickEngagementLink() {
         driver.findElement(engagementLink).click();
@@ -196,14 +220,7 @@ public class FDPageObjectData
         safeClick(diamondRowForSetting);
     }
 
-//    public void selectThisStone()
-//    {
-//    	WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
-//        WebElement selectingStone = wait1.until(ExpectedConditions.elementToBeClickable(selectThisStoneButton));
-//        selectingStone.click();
-//       // driver.findElement(selectThisStoneButton).click();
-//    }
-public void selectThisStone()
+    public void selectThisStone()
 {
     safeClick(selectThisStoneButton);
 }
@@ -211,11 +228,7 @@ public void selectThisStone()
     public void selectThisSetting() {
     	driver.findElement(selectThisSettingButton).click();
     }
-            //can use this method  to entire project bcz i developed with unique xpath
-//    public void searchSettingForThisDiamond() {
-//        driver.findElement(searchSettingButton).click();
-//    }
-            public void searchSettingForThisDiamond()
+    public void searchSettingForThisDiamond()
             {
                 safeClick(searchSettingButton);
             }
@@ -228,39 +241,22 @@ public void selectThisStone()
     public void selectHarperRing() {
         driver.findElement(harperRingLink).click();
     }
-        // Diamond flow
-//    public void addSettingToStone() {
-//        driver.findElement(addSettingToStoneButton).click();
-//    }
+
         public void addSettingToStone()
         {
             safeClick(addSettingToStoneButton);
         }
-    //Setting flow
-//    public void addStoneToSetting()
-//    {
-//        driver.findElement(addStoneToSettingButton).click();
-//    }
 
     public void addStoneToSetting()
     {
         safeClick(addStoneToSettingButton);
     }
-    
-    
-//    public void proceedToCheckout() {
-//    	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//         WebElement checkout = wait.until(ExpectedConditions.elementToBeClickable(checkoutButton));
-//         checkout.click();
-//       // driver.findElement(checkoutButton).click();
-//
-//    }
-//By cartTotalPrice = By.xpath("//span[contains(text(),'CART TOTAL')]/following::span[1]");
+
 By cartTotalPrice = By.id("cart-total-price");
 
     public String getCartTotalPrice() {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         return wait.until(ExpectedConditions.visibilityOfElementLocated(cartTotalPrice))
                 .getText()
@@ -269,7 +265,7 @@ By cartTotalPrice = By.id("cart-total-price");
     By checkoutTotalPrice = By.xpath("//span[normalize-space()='USD']/following::strong[2]");
     public String getCheckoutTotalPrice() {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         return wait.until(ExpectedConditions.visibilityOfElementLocated(checkoutTotalPrice))
                 .getText()
@@ -325,14 +321,14 @@ public void proceedToCheckout()
     	String currentTitle=driver.getTitle();
         Assert.assertEquals(currentTitle, expectedTitle);
   }
-    public void completeCheckoutFlow(FDPageObjectData page, ExtentTest test) {
+    public void completeCheckoutFlow(FDPageObjectData page, ExtentTest test) throws InterruptedException {
 
         String cartTotal = page.getCartTotalPrice();
        // test.info("Cart Total: " + cartTotal);
 
         page.proceedToCheckout();
         test.info("Proceeded to checkout");
-
+       Thread.sleep(2000);
         page.checkoutValidation(cartTotal);
         test.pass("Checkout validation completed");
     }
@@ -398,10 +394,7 @@ public void proceedToCheckout()
     }
     //-----------------------------------------------Jewelry--------------------------
     
-//    public void jewelryNav()
-//    {
-//    	driver.findElement(jewelryXpath).click();
-//    }
+
 public void jewelryNav() {
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
@@ -416,26 +409,14 @@ public void jewelryNav() {
     }
     public void jewleryPlp()
     {
-    	/* WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
-         WebElement earRing = wait1.until(ExpectedConditions.elementToBeClickable(earRingsPlp));
-         earRing.click();*/
+
     	driver.findElement(earRingsPlp).click();
     }
     public void selectnecklesOption()
     {
     	driver.findElement(necklesXpath).click();
     }
-//    public void selectThisNecklaceButton()
-//    {
-//    driver.findElement(necklaceButtonXpath).click();
-//    }
-//    public void selectDiamondFromNecklacesPlp()
-//    {
-//    	 WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
-//         WebElement necklacePlp = wait1.until(ExpectedConditions.elementToBeClickable(selectDiamondForNecklace));
-//         necklacePlp.click();
-//    	//driver.findElement(selectDiamondForNecklace).click();
-//    }
+
 public void selectThisNecklaceButton()
 {
     safeClick(necklaceButtonXpath);
@@ -444,14 +425,6 @@ public void selectDiamondFromNecklacesPlp()
 {
     safeClick(selectDiamondForNecklace);
 }
-//    public void addDiamondToNecklaceButton()
-//    {
-//
-//   	 WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
-//        WebElement diamondTonecklace = wait1.until(ExpectedConditions.elementToBeClickable(addDiamondToNecklaceButtonXpath));
-//        diamondTonecklace.click();
-//    	//driver.findElement(addDiamondToNecklaceButtonXpath).click();
-//    }
 public void addDiamondToNecklaceButton()
 {
     safeClick(addDiamondToNecklaceButtonXpath);
@@ -537,17 +510,6 @@ public void scrollToEndOfPage() throws InterruptedException {
            int randomIndex = rand.nextInt(products.size());
              return products.get(randomIndex);
      }
-
-     //Method to click on a random product
-//    public void clickRandomProduct(By productLocator) throws InterruptedException
-//    {
-//      // Scroll to the end of the page first
-//
-//        scrollToEndOfPage();
-//       // Select and click a random product
-//       WebElement randomProduct = selectRandomProduct(productLocator);
-//         randomProduct.click();
-//   }
 
     public void clickRandomProduct(By productLocator) throws InterruptedException {
 

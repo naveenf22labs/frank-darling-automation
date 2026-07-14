@@ -22,13 +22,13 @@ public class MultipleDefaultDiamondsToCart extends FDUtils {
         test.get().info("Starting with setting.");
         cart.startWithSetting();
 
-        test.get().info("Closing any visible popup.");
-        cart.closePopUp();
 
         test.get().info("Clicking a random product from jewelry products PLP.");
+       // cart.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
         cart.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
+        test.get().info("Clicked on a random product");
 
-        Thread.sleep(2000); // Consider replacing with an explicit wait.
+        //Thread.sleep(2000); // Consider replacing with an explicit wait.
 
         test.get().info("Selecting a random band material.");
         cart.selectRandomBandMaterial();
@@ -64,10 +64,11 @@ public class MultipleDefaultDiamondsToCart extends FDUtils {
         cart.handleDiamondTypeIfPresent(test.get());
         cart.selectThisSetting();
         cart.defaultDiamond();
-        Thread.sleep(2000);
+      //  Thread.sleep(2000);
         test.get().info("Proceeding to checkout.");
         cart.proceedToCheckout();
         test.get().info("Validating checkout.");
-        cart.checkoutValidation();
+       // cart.checkoutValidation();
+        cart.completeCheckoutFlow(cart, test.get());
     }
 }

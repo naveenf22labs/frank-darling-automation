@@ -1,6 +1,7 @@
 package cartCheckout;
 
 import com.aventstack.extentreports.ExtentTest;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageobjects.com.FDPageObjectData;
 import utils.com.FDUtils;
@@ -81,13 +82,20 @@ public class DiamondsCombinationToCart extends FDUtils {
         test.get().info("Adding default diamond.");
         cart.defaultDiamond();
 
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
 
         test.get().info("Focusing on cart.");
         cart.cartFocusUp();
-
+      //  Thread.sleep(3000);
         test.get().info("Removing all products from cart.");
         cart.removeAllProductsFromCart();
+
+        Assert.assertTrue(
+                cart.isCartEmpty(),
+                "Products are still present in the cart"
+        );
+
+        System.out.println("All products removed from cart.");
         //required to check all products should removed.
 
         // Uncomment if needed

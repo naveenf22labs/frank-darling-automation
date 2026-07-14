@@ -22,14 +22,8 @@ public class RemovingJewelryProducts extends FDUtils {
         test.get().info("Selecting Earrings option.");
         cart.earRingsOption();
 
-        test.get().info("Closing popup if present.");
-        cart.closePopUp();
-
         test.get().info("Clicking on a random Earrings product.");
         cart.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
-
-        test.get().info("Interacting with Reamaze widget.");
-        cart.doubleClickReamazeWidget();
 
         test.get().info("Selecting random band material for Earrings.");
         cart.selectRandomBandMaterial();
@@ -77,12 +71,12 @@ public class RemovingJewelryProducts extends FDUtils {
         test.get().info("Selecting a diamond from Necklace PLP.");
         cart.selectDiamondFromNecklacesPlp();
 
-        Thread.sleep(2000); // Replace with WebDriverWait if needed
+       // Thread.sleep(2000); // Replace with WebDriverWait if needed
 
         test.get().info("Adding selected diamond to Necklace.");
         cart.addDiamondToNecklaceButton();
 
-        Thread.sleep(3000); // For UI stability, consider explicit wait
+       // Thread.sleep(3000); // For UI stability, consider explicit wait
 
         // Removing all jewelry products from cart
         test.get().info("Focusing on cart.");
