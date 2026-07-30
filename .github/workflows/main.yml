@@ -37,7 +37,7 @@ jobs:
           sudo apt install -y google-chrome-stable
 
       - name: Run Tests using TestSuite.xml
-        run: mvn clean test -Dheadless=true -DsuiteXmlFile=TestSuite.xml
+        run: mvn clean test -Dheadless=true -Denv=production -DsuiteXmlFile=TestSuite.xml
 
       - name: Upload Test Reports
         if: always()

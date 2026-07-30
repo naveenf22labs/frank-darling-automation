@@ -54,8 +54,15 @@ public class FDUtils {
 
 		System.out.println("Window Size: " + driver.manage().window().getSize());
 
-		driver.get("https://frankdarling.com");
+		String environment = System.getProperty("env", "production");
 
+		if (environment.equalsIgnoreCase("staging"))
+		{
+			driver.get("https://staging.frankdarling.xyz/");
+		} else
+		{
+			driver.get("https://frankdarling.com");
+		}
 		// Wait for homepage to load
 		Thread.sleep(3000);
 
