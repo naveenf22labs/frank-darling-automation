@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Critical Business Flow Smoke Tests">
+
+    <listeners>
+        <listener class-name="utils.com.RetryListener"/>
+    </listeners>
+
+    <!-- Critical Business Flows -->
+    <test name="Smoke Tests">
+        <classes>
+
+            <!-- Engagement -->
+            <class name="library.com.EngagementSettingFlow"/>
+            <class name="library.com.EngagementDiamondFlow"/>
+
+            <!-- Jewelry -->
+            <class name="jewelry.com.NecklacesFlow"/>
+
+            <!-- Wedding -->
+            <class name="weddings.library.com.MenWeddingBands"/>
+
+        </classes>
+    </test>
+
+</suite>

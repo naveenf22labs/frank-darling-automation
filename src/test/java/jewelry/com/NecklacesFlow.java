@@ -10,7 +10,7 @@ public class NecklacesFlow extends FDUtils {
     @Test(groups = "jewelry", description = "Tested the flow of Necklace. Selecting the necklace, adding diamond to the necklace, then add to the cart and completing the checkout flow.")
     public void jewelryNecklaceFlow() throws InterruptedException {
 
-        // ✅ Initialize ExtentTest for logging
+        //  Initialize ExtentTest for logging
         ExtentTest logger = getExtentInstance().createTest("Jewelry Necklace Flow Test");
         test.set(logger);
 
@@ -27,10 +27,10 @@ public class NecklacesFlow extends FDUtils {
 //        Thread.sleep(2000);
 
         necklaces.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
-        test.get().info("Clicked on a random necklace product");
+      //  test.get().info("Clicked on a random necklace product");
 
         necklaces.selectRandomBandMaterial();
-        test.get().info("Selected a random band material");
+       // test.get().info("Selected a random band material");
 
         necklaces.selectThisNecklaceButton();
         test.get().info("Clicked on 'Select This Necklace'");

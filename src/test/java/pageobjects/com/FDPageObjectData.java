@@ -14,7 +14,7 @@ import org.testng.Assert;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
@@ -511,6 +511,8 @@ public void scrollToEndOfPage() throws InterruptedException {
              return products.get(randomIndex);
      }
 
+    private By productNameInPdp=By.xpath("//h2[contains(@class,'font-serif') and contains(@class,'text-lg')]");
+
     public void clickRandomProduct(By productLocator) throws InterruptedException {
 
         scrollToEndOfPage();
@@ -535,6 +537,15 @@ public void scrollToEndOfPage() throws InterruptedException {
                         .executeScript("arguments[0].scrollIntoView({block:'center'});", product);
 
                 product.click();
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+                String productName = wait
+                        .until(ExpectedConditions.visibilityOfElementLocated(productNameInPdp))
+                        .getText()
+                        .trim();
+
+                test.get().info("Selected random product: " + productName);
+
 
                 return;
 
@@ -611,8 +622,9 @@ public void scrollToEndOfPage() throws InterruptedException {
         // Get the value from the nested input
         WebElement input = randomLabel.findElement(By.xpath(".//input[@type='radio']"));
         String value = input.getAttribute("value");
+        test.get().info("Selected " + optionGroupName + ": " + value);
 
-        System.out.println("Selected random option for " + optionGroupName + ": " + value);
+       // System.out.println("Selected random option for " + optionGroupName + ": " + value);
     }
     public void selectRandomBandMaterial() {
         selectRandomRadioOption(bandMaterialDropdownSelector, "Band Material");
@@ -759,5 +771,7 @@ public void selectRandomOption(By dropdownLocator, String dropdownName) {
 
         throw new RuntimeException("Unable to click: " + locator);
     }
+
+
 }
 

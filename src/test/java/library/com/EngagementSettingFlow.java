@@ -25,7 +25,7 @@ public class EngagementSettingFlow extends FDUtils {
         test.get().info("Started flow with a Setting");
 
         engagementPage.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
-        test.get().info("Clicked on a random product");
+      //  test.get().info("Clicked on a random product");
 
         engagementPage.selectRandomBandMaterial();
         test.get().info("Selected random band material");

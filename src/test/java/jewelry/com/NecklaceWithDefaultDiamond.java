@@ -25,11 +25,13 @@ public class NecklaceWithDefaultDiamond extends FDUtils {
         test.get().info("Selected the Necklaces option");
 
         necklaces.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
-        test.get().info("Clicked a random necklace product");
+        //test.get().info("Clicked a random necklace product");
+
+        necklaces.selectRandomBandMaterial();
 
 
         necklaces.selectThisNecklaceButton();
-        test.get().info("Clicked 'Select This Necklace'");
+        test.get().info("Clicked on 'Select This Necklace' button");
 
         necklaces.defaultDiamond();
         test.get().info("Selected default diamond");

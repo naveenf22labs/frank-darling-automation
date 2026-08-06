@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="FrankDarling Cart Regression Suite">
+
+    <listeners>
+        <listener class-name="utils.com.RetryListener"/>
+    </listeners>
+
+    <test name="Cart-Checkout Related Testcases">
+        <groups>
+            <run>
+                <include name="CartCheckoutTestCases"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="cartCheckout.MultipleDefaultDiamondsToCart" />
+            <class name="cartCheckout.MultipleProductsToCheckout" />
+            <class name="cartCheckout.RemovingJewelryProducts" />
+            <class name="cartCheckout.RemovingWeddingProducts"/>
+            <class name="cartCheckout.RemovingJewelryWeddingProducts" />
+            <class name="cartCheckout.SettingsJewelryWeddingItems" />
+            <class name="cartCheckout.SWADJewelry" />
+            <class name="cartCheckout.DiamondsCombinationToCart" />
+
+        </classes>
+    </test>
+
+</suite>

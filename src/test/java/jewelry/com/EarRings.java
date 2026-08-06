@@ -26,10 +26,9 @@ public class EarRings extends FDUtils
         test.get().info("Selected the Earring category");
 
         earRings.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
-        test.get().info("Clicked a random product from Product Listing Page");
 
         earRings.selectRandomBandMaterial();
-        test.get().info("Selected random band material for earring");
+       // test.get().info("Selected random band material for earring");
 
         earRings.totalCaratWeight();
         test.get().info("Selected total carat weight");
