@@ -29,7 +29,7 @@ public class TennisBraceletsFlow extends FDUtils {
 
         tennis.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
       //  test.get().info("Clicked a random bracelet product");
-        tennis.selectRandomBandMaterial();
+        tennis.selectRandomMetalType();
 
         tennis.tennisTotalLength();
         test.get().info("Selected bracelet total length");

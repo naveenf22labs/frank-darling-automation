@@ -1,7 +1,6 @@
 package library.com;
 
 import com.aventstack.extentreports.ExtentTest;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import pageobjects.com.FDPageObjectData;
 import utils.com.FDUtils;
@@ -45,14 +44,14 @@ public class EngagementDiamondFlow extends FDUtils {
         engagementPage.clickRandomProduct(FDPageObjectData.diamondSettingPLP);
         test.get().info("Clicked a random setting product");
 
-        engagementPage.selectRandomBandMaterial();
-        test.get().info("Selected random band material");
+        engagementPage.selectRandomMetalType();
+       // test.get().info("Selected random band material");
 
         engagementPage.ringSizer();
-        test.get().info("Used ring sizer option");
+        test.get().info("Selected random ring sizer ");
 
-        engagementPage.bandMaterialDropdown();
-        test.get().info("User selects Band material option");
+        engagementPage.bandWidthDropdown();
+        test.get().info("Selected Band metal");
             // select if diamond type dropdown  is present in PDP
         engagementPage.handleDiamondTypeIfPresent(test.get());
 

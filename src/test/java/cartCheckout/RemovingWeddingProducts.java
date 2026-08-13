@@ -32,7 +32,7 @@ public class RemovingWeddingProducts extends FDUtils {
         cart.clickRandomProduct(FDPageObjectData.weddingProductPLP);
 
         test.get().info("Selecting random band material for Anniversary Band.");
-        cart.selectRandomBandMaterial();
+        cart.selectRandomMetalType();
 
         test.get().info("Adding Anniversary Band to cart.");
         cart.addToCartButton();
@@ -48,7 +48,7 @@ public class RemovingWeddingProducts extends FDUtils {
         cart.clickRandomProduct(FDPageObjectData.weddingProductPLP);
 
         test.get().info("Selecting random band material for Gold Band.");
-        cart.selectRandomBandMaterial();
+        cart.selectRandomMetalType();
 
         test.get().info("Adding Gold Band to cart.");
         cart.addToCartButton();
@@ -64,7 +64,7 @@ public class RemovingWeddingProducts extends FDUtils {
         cart.clickRandomProduct(FDPageObjectData.weddingProductPLP);
 
         test.get().info("Selecting random band material for Diamond Band.");
-        cart.selectRandomBandMaterial();
+        cart.selectRandomMetalType();
 
         test.get().info("Adding Diamond Band to cart.");
         cart.addToCartButton();
@@ -83,7 +83,7 @@ public class RemovingWeddingProducts extends FDUtils {
         // cart.doubleClickReamazeWidget();
 
         test.get().info("Selecting random band material for Men's Wedding Band.");
-        cart.selectRandomBandMaterial();
+        cart.selectRandomMetalType();
 
         test.get().info("Adding Men's Wedding Band to cart.");
         cart.addToCartButton();

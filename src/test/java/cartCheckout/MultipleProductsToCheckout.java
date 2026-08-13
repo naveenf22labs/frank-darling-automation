@@ -45,7 +45,7 @@ public class MultipleProductsToCheckout extends FDUtils {
         cart1.clickRandomProduct(FDPageObjectData.diamondSettingPLP);
 
         test.get().info("Selecting a random band material.");
-        cart1.selectRandomBandMaterial();
+        cart1.selectRandomMetalType();
 
         test.get().info("Adding setting to the selected stone.");
         cart1.addSettingToStone();
@@ -61,7 +61,7 @@ public class MultipleProductsToCheckout extends FDUtils {
         cart1.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
 
         test.get().info("Selecting random band material for earrings.");
-        cart1.selectRandomBandMaterial();
+        cart1.selectRandomMetalType();
 
         test.get().info("Adding earrings to cart.");
         cart1.addToCartButton();
@@ -77,7 +77,7 @@ public class MultipleProductsToCheckout extends FDUtils {
         cart1.clickRandomProduct(FDPageObjectData.weddingProductPLP);
 
         test.get().info("Selecting random band material for anniversary band.");
-        cart1.selectRandomBandMaterial();
+        cart1.selectRandomMetalType();
 
         test.get().info("Adding anniversary band to cart.");
         cart1.addToCartButton();
@@ -93,7 +93,7 @@ public class MultipleProductsToCheckout extends FDUtils {
         cart1.clickRandomProduct(FDPageObjectData.weddingProductPLP);
 
         test.get().info("Selecting random band material for gold band.");
-        cart1.selectRandomBandMaterial();
+        cart1.selectRandomMetalType();
 
         test.get().info("Adding gold band to cart.");
         cart1.addToCartButton();

@@ -45,7 +45,7 @@ public class SWADJewelry extends FDUtils {
         cart1.clickRandomProduct(FDPageObjectData.diamondSettingPLP);
 
         test.get().info("Selecting random band material.");
-        cart1.selectRandomBandMaterial();
+        cart1.selectRandomMetalType();
 
         test.get().info("Adding selected setting to diamond.");
         cart1.addSettingToStone();
@@ -69,7 +69,7 @@ public class SWADJewelry extends FDUtils {
         cart1.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
 
         test.get().info("Selecting random band material for earrings.");
-        cart1.selectRandomBandMaterial();
+        cart1.selectRandomMetalType();
 
         test.get().info("Adding earrings to cart.");
         cart1.addToCartButton();
@@ -88,7 +88,7 @@ public class SWADJewelry extends FDUtils {
         cart1.clickRandomProduct(FDPageObjectData.weddingProductPLP);
 
         test.get().info("Selecting random band material for Anniversary ring.");
-        cart1.selectRandomBandMaterial();
+        cart1.selectRandomMetalType();
 
         test.get().info("Adding Anniversary ring to cart.");
         cart1.addToCartButton();

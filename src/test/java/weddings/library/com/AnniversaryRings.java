@@ -28,18 +28,17 @@ public class AnniversaryRings extends FDUtils {
         anniversary.clickRandomProduct(FDPageObjectData.weddingProductPLP);
         test.get().info("Clicked random Anniversary ring product");
 
-
-        anniversary.selectRandomBandMaterial();
-        test.get().info("Selected random band material");
+        anniversary.selectRandomMetalType();
+        //test.get().info("Selected random band material");
 
         anniversary.ringSizer();
-        test.get().info("Used ring sizer");
+        test.get().info("Selected Random Ring Sizer");
 
         anniversary.stoneType();
-        test.get().info("Selecting diamond type");
+        test.get().info("Selecting Diamond Type");
 
         anniversary.addToCartButton();
-        test.get().info("Added product to cart");
+        test.get().info("Added Product to Cart");
         anniversary.completeCheckoutFlow(anniversary, test.get());
 
     }

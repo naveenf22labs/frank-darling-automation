@@ -25,14 +25,13 @@ public class StackingRings extends FDUtils {
         test.get().info("Selected Stacking Rings option");
 
         stacking.clickRandomProduct(FDPageObjectData.weddingProductPLP);
-        test.get().info("Clicked random Stacking Ring product");
+       // test.get().info("Clicked random Stacking Ring product");
 
-//        stacking.selectRandomBandMaterial();
-//        test.get().info("Selected random band material");
+        stacking.selectRandomMetalType();
 
 
         stacking.ringSizer();
-        test.get().info("Used ring sizer");
+        test.get().info("Selected Random Ring sizer");
         // will select if stone type is present.
         stacking.handleDiamondTypeIfPresent(test.get());
 

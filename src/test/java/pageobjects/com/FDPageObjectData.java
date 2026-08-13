@@ -626,8 +626,8 @@ public void scrollToEndOfPage() throws InterruptedException {
 
        // System.out.println("Selected random option for " + optionGroupName + ": " + value);
     }
-    public void selectRandomBandMaterial() {
-        selectRandomRadioOption(bandMaterialDropdownSelector, "Band Material");
+    public void selectRandomMetalType() {
+        selectRandomRadioOption(bandMaterialDropdownSelector, "Random Band Metal");
     }
 
 public void selectRandomOption(By dropdownLocator, String dropdownName) {
@@ -674,7 +674,7 @@ public void selectRandomOption(By dropdownLocator, String dropdownName) {
     	selectRandomOption(stoneTypeXpath, "StoneType");
     }
 
-    public void bandMaterialDropdown()
+    public void bandWidthDropdown()
     {
         selectRandomOption(bandWidthDropdownSelector, "BandWidth");
     }
@@ -772,6 +772,20 @@ public void selectRandomOption(By dropdownLocator, String dropdownName) {
         throw new RuntimeException("Unable to click: " + locator);
     }
 
+    private By sortDropdown =By.xpath("//div[text()='Recommended']");
+   // private By sortDropdown = By.xpath("//div[text()='Recommended']");
+   public void selectSortOption(String option) {
 
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+       // Open sort dropdown
+       wait.until(ExpectedConditions.elementToBeClickable(sortDropdown)).click();
+
+       // Select required option
+       By optionLocator = By.xpath("//span[normalize-space()='" + option + "']");
+
+       wait.until(ExpectedConditions.elementToBeClickable(optionLocator)).click();
+
+   }
 }
 

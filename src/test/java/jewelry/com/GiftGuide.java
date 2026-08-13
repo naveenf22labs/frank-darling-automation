@@ -24,8 +24,8 @@ public class GiftGuide extends FDUtils
           gift.giftGuide();
           test.get().info("Opened Gift Guide");
 
-          gift.closePopUp();
-          test.get().info("Closed any popup");
+//          gift.closePopUp();
+//          test.get().info("Closed any popup");
 
 //          gift.doubleClickReamazeWidget();
 //          test.get().info("Interacted with Reamaze widget");

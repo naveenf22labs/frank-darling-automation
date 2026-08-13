@@ -1,13 +1,9 @@
 package weddings.library.com;
 
 import com.aventstack.extentreports.ExtentTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import pageobjects.com.FDPageObjectData;
 import utils.com.FDUtils;
-
-import java.util.List;
 
 public class GoldBands extends FDUtils {
 
@@ -31,14 +27,14 @@ public class GoldBands extends FDUtils {
 //        test.get().info("Closed any popup");
 
         goldBandPage.clickRandomProduct(FDPageObjectData.weddingProductPLP);
-        test.get().info("Clicked random Gold Band product");
+        //test.get().info("Clicked random Gold Band product");
 //
 
-        goldBandPage.selectRandomBandMaterial();
-        test.get().info("Selected random band material");
+        goldBandPage.selectRandomMetalType();
+        //test.get().info("Selected random band material");
 
         goldBandPage.ringSizer();
-        test.get().info("Used ring sizer");
+        test.get().info("Selected Random Ring Sizer");
 
 //        //will select stone/diamond type if its present.
         goldBandPage.handleDiamondTypeIfPresent(test.get());

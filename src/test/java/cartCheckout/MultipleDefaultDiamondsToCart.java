@@ -31,11 +31,11 @@ public class MultipleDefaultDiamondsToCart extends FDUtils {
         //Thread.sleep(2000); // Consider replacing with an explicit wait.
 
         test.get().info("Selecting a random band material.");
-        cart.selectRandomBandMaterial();
+        cart.selectRandomMetalType();
         cart.ringSizer();
         test.get().info("Used ring sizer");
 
-        cart.bandMaterialDropdown();
+        cart.bandWidthDropdown();
         test.get().info("Band material option selected");
 
         // select if diamond type dropdown is present in PDP
@@ -53,11 +53,11 @@ public class MultipleDefaultDiamondsToCart extends FDUtils {
         cart.startWithSetting();
        // cart.doubleClickReamazeWidget();
         cart.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
-        cart.selectRandomBandMaterial();
+        cart.selectRandomMetalType();
         cart.ringSizer();
         test.get().info("Used ring sizer");
 
-        cart.bandMaterialDropdown();
+        cart.bandWidthDropdown();
         test.get().info("Band material option selected");
 
         // select if diamond type dropdown  is present in PDP

@@ -44,11 +44,11 @@ public class DiamondsCombinationToCart extends FDUtils {
         cart.clickRandomProduct(FDPageObjectData.diamondSettingPLP);
 
         test.get().info("Selecting a random band material.");
-        cart.selectRandomBandMaterial();
+        cart.selectRandomMetalType();
 
         cart.ringSizer();
         test.get().info("Used ring sizer option");
-        cart.bandMaterialDropdown();
+        cart.bandWidthDropdown();
         test.get().info("User selects Band material option");
         // select if diamond type dropdown  is present in PDP
         cart.handleDiamondTypeIfPresent(test.get());
@@ -67,11 +67,11 @@ public class DiamondsCombinationToCart extends FDUtils {
         cart.clickRandomProduct(FDPageObjectData.diamondSettingPLP);
 
         test.get().info("Selecting a random band material.");
-        cart.selectRandomBandMaterial();
+        cart.selectRandomMetalType();
         cart.ringSizer();
         test.get().info("Used ring sizer");
 
-        cart.bandMaterialDropdown();
+        cart.bandWidthDropdown();
         test.get().info("Band material option selected");
 
         // select if diamond type dropdown  is present in PDP

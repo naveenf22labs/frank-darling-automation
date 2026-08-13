@@ -26,7 +26,7 @@ public class SettingsJewelryWeddingItems extends FDUtils {
         cart.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
 
         test.get().info("Selecting a random band material.");
-        cart.selectRandomBandMaterial();
+        cart.selectRandomMetalType();
 
         test.get().info("Selecting the setting.");
         cart.selectThisSetting();
@@ -65,7 +65,7 @@ public class SettingsJewelryWeddingItems extends FDUtils {
         cart.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
 
         test.get().info("Selecting band material for earrings.");
-        cart.selectRandomBandMaterial();
+        cart.selectRandomMetalType();
 
         test.get().info("Adding earrings to cart.");
         cart.addToCartButton();
@@ -84,7 +84,7 @@ public class SettingsJewelryWeddingItems extends FDUtils {
         cart.clickRandomProduct(FDPageObjectData.weddingProductPLP);
 
         test.get().info("Selecting band material for Anniversary ring.");
-        cart.selectRandomBandMaterial();
+        cart.selectRandomMetalType();
 
         test.get().info("Adding Anniversary ring to cart.");
         cart.addToCartButton();

@@ -25,15 +25,14 @@ public class DiamondBands extends FDUtils {
         test.get().info("Selected Diamond Band option");
 
         diamondBand.clickRandomProduct(FDPageObjectData.weddingProductPLP);
-        test.get().info("Clicked random diamond band product");
+       // test.get().info("Clicked random diamond band product");
 
         // diamondBand.selectDiamondBandProduct();
 
-//        diamondBand.selectRandomBandMaterial();
-//        test.get().info("Selected random band material");
+      diamondBand.selectRandomMetalType();
 
         diamondBand.ringSizer();
-        test.get().info("Used ring sizer");
+        //test.get().info("Used ring sizer");
         diamondBand.stoneType();
         test.get().info("Selecting stone type");
 

@@ -27,14 +27,14 @@ public class EngagementSettingFlow extends FDUtils {
         engagementPage.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
       //  test.get().info("Clicked on a random product");
 
-        engagementPage.selectRandomBandMaterial();
-        test.get().info("Selected random band material");
+        engagementPage.selectRandomMetalType();
+       // test.get().info("Selected random Band Metal");
 
         engagementPage.ringSizer();
-        test.get().info("Used ring sizer");
+        test.get().info("Selected different Ring sizer");
 
-        engagementPage.bandMaterialDropdown();
-        test.get().info("Band material option selected");
+        engagementPage.bandWidthDropdown();
+        test.get().info("Selected Random Band Width option");
 
         // select if diamond type dropdown  is present in PDP
         engagementPage.handleDiamondTypeIfPresent(test.get());

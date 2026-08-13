@@ -29,7 +29,7 @@ public class NecklacesFlow extends FDUtils {
         necklaces.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
       //  test.get().info("Clicked on a random necklace product");
 
-        necklaces.selectRandomBandMaterial();
+        necklaces.selectRandomMetalType();
        // test.get().info("Selected a random band material");
 
         necklaces.selectThisNecklaceButton();

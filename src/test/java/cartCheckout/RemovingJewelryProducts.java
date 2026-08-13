@@ -26,7 +26,7 @@ public class RemovingJewelryProducts extends FDUtils {
         cart.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
 
         test.get().info("Selecting random band material for Earrings.");
-        cart.selectRandomBandMaterial();
+        cart.selectRandomMetalType();
 
         test.get().info("Adding Earrings to cart.");
         cart.addToCartButton();
@@ -42,7 +42,7 @@ public class RemovingJewelryProducts extends FDUtils {
         cart.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
 
         test.get().info("Selecting random band material for Tennis Necklace.");
-        cart.selectRandomBandMaterial();
+        cart.selectRandomMetalType();
 
         test.get().info("Adding Tennis Necklace to cart.");
         cart.addToCartButton();
@@ -60,7 +60,7 @@ public class RemovingJewelryProducts extends FDUtils {
         cart.clickRandomProduct(FDPageObjectData.jewelryProductsPLP);
 
         test.get().info("Selecting random band material for Necklace.");
-        cart.selectRandomBandMaterial();
+        cart.selectRandomMetalType();
 
         test.get().info("Clicking 'Select This Necklace' button.");
         cart.selectThisNecklaceButton();

@@ -25,15 +25,15 @@ public class EternityBand extends FDUtils {
         test.get().info("Selected Eternity Band option");
 
         eternityBand.clickRandomProduct(FDPageObjectData.weddingProductPLP);
-        test.get().info("Clicked random Eternity Band product");
+       // test.get().info("Clicked random Eternity Band product");
 
         // eternityBand.selectDiamondBandProduct();
 
-//        eternityBand.selectRandomBandMaterial();
+          eternityBand.selectRandomMetalType();
 //        test.get().info("Selected random band material");
 
         eternityBand.ringSizer();
-        test.get().info("Used ring sizer");
+        test.get().info("Seelcted Different Ring sizer");
         eternityBand.stoneType();
         test.get().info("Selecting the stone type");
 

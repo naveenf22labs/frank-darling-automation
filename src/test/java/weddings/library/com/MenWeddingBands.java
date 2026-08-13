@@ -26,16 +26,14 @@ public class MenWeddingBands extends FDUtils {
         test.get().info("Selected Men Wedding Bands option");
 
         weddingPage.clickRandomProduct(FDPageObjectData.weddingProductPLP);
-        test.get().info("Clicked a random Men Wedding Band product");
+       // test.get().info("Clicked a random Men Wedding Band product");
 
-//        weddingPage.doubleClickReamazeWidget();
-//        test.get().info("Interacted with Reamaze widget");
-//
-        weddingPage.selectRandomBandMaterial();
-        test.get().info("Selected random band material");
+        weddingPage.selectRandomMetalType();
+        //test.get().info("Selected random band material");
 
         weddingPage.ringSizer();
-        test.get().info("Used ring sizer");
+        test.get().info("Selected Random Ring Sizer");
+
         weddingPage.handleDiamondTypeIfPresent(test.get());
 
         weddingPage.addToCartButton();
