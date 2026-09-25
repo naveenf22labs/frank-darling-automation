@@ -4,8 +4,8 @@ on:
   repository_dispatch:
     types: [run-automation]
 
-  schedule:
-    - cron: '45 4 * * *'
+#  schedule:
+ #   - cron: '45 4 * * *'
 
   workflow_dispatch:
 
